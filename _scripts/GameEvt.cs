@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class GameEvt : MonoBehaviour {
 	//이전씬에서로드된데이터가져오기
 	public GameObject GM;
-
-	/// <summary>
-	/// 0 : 희귀도 1 : 터치값 2 : 필요터치값 
-	/// </summary>
 	public int eggRare_i, touchNum_i, maxNum_i,eggIndex_i;
 	public GameObject[] ppiyak_obj;
 	public Sprite[] ppiyakBasic_spr,ppiyakGood_spr,ppiyakAwesome_spr;
