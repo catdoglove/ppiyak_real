@@ -31,16 +31,15 @@ public class BookEvt : MonoBehaviour {
 
 	//도감열기
 	public void bookOpen(){
-		
 		Book_obj.SetActive (true);
 		for (int i = 0; i < 13; i++) {
 			GM.GetComponent<BookEvt> ().bookGM_str = "Image (" + i + ")";
 			GM.GetComponent<BookEvt> ().bookGM [i] = GameObject.Find (GM.GetComponent<BookEvt> ().bookGM_str);
 		}
 		for (int i = 0; i < 5; i++) {
-			//if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
-			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [i+1];
-			//}
+			if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
+				GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [i+1];
+			}
 		}
 
 
@@ -76,27 +75,29 @@ public class BookEvt : MonoBehaviour {
 		//자신의 이름을 불러옴
 		string str=this.gameObject.name;
 		//자신의 이름에 달린 번호를 불러옴
-		int c_Num = int.Parse(str.Substring (6,1));
+		int c_Num = int.Parse(str.Substring (6,2));
 		int cal = c_Num;
 		while (cal > 0) {
 			cal = cal - 2; 
 		}
 		if (cal == 0) {
-			infoImage1_obj.SetActive (true);
-			infoBack_obj.SetActive (true);
-			infoImage1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
-			infoImage2_obj.SetActive (false);
+			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (true);
+			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
+			GM.GetComponent<BookEvt> ().infoImage1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
 		} else {
-			infoImage2_obj.SetActive (true);
-			infoBack_obj.SetActive (true);
-			infoImage2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
-			infoImage1_obj.SetActive (false);
+			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (true);
+			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
+			GM.GetComponent<BookEvt> ().infoImage2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
 		}
 
 		//infoImage_obj.GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [c_Num];
 	}
 
 	public void infoBackClose(){
-		infoBack_obj.SetActive (false);
+		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (false);
+		GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
+		GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
 	}
 }
