@@ -9,12 +9,13 @@ public class GameBtnEvt : MonoBehaviour {
 	Color color;
 	float fade_f;
 	float buttonPos_f;
-
 	int buttonList_i=0;
+
 
 	// Use this for initialization
 	void Start () {
 		
+
 	}
 
 	public void openButton(){

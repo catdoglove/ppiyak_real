@@ -9,22 +9,28 @@ public class BookEvt : MonoBehaviour {
 	string bookGM_str;
 
 	public GameObject Book_obj,bookInfo_obj,infoImage1_obj,infoImage2_obj,infoBack_obj;
-	public Sprite[] infoImage_spr;
+	public GameObject infoName1_obj, infoName2_obj;
+	public Text infoText1_txt,infoText2_txt;
+	public Sprite[] infoImage_spr,infoName_spr;
 
 	public GameObject[] bookBasic_obj,bookGood_obj,bookAwesome_obj;
 
 	public Sprite[] spr;
+
+	List<Dictionary<string,object>> data;
 
 	// Use this for initialization
 	void Start () {
 		//스프라이트동적할당과 게임오브젝트동적할당
 		string str=this.gameObject.name;
 		if (str.Length < 3) {
+			data = CSVReader.Read ("ppiyak_info");
 			for (int i = 0; i < 20; i++) {
 				i++;
 				infoImage_spr[i-1]=Resources.Load<Sprite>("collection/bookbg("+i+")");
 				i--;
 			}
+			infoName_spr = Resources.LoadAll<Sprite> ("collection/ppiyak_name(250x50)");
 		}
 
 	}
@@ -84,11 +90,15 @@ public class BookEvt : MonoBehaviour {
 			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (true);
 			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
 			GM.GetComponent<BookEvt> ().infoImage1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoName1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoText1_txt.text=""+GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
 			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
 		} else {
 			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (true);
 			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
 			GM.GetComponent<BookEvt> ().infoImage2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoName2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
+			GM.GetComponent<BookEvt> ().infoText2_txt.text=""+GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
 			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
 		}
 
@@ -99,5 +109,9 @@ public class BookEvt : MonoBehaviour {
 		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (false);
 		GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
 		GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
+	}
+
+	public void bookClose(){
+		Book_obj.SetActive (false);
 	}
 }
