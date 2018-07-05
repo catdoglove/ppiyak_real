@@ -114,4 +114,5 @@ public class BookEvt : MonoBehaviour {
 	public void bookClose(){
 		Book_obj.SetActive (false);
 	}
+
 }
