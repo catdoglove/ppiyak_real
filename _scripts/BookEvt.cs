@@ -113,6 +113,8 @@ public class BookEvt : MonoBehaviour {
 
 	public void bookClose(){
 		Book_obj.SetActive (false);
+		infoBackClose ();
+		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
 	}
 
 }

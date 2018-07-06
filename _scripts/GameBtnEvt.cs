@@ -11,6 +11,8 @@ public class GameBtnEvt : MonoBehaviour {
 	float buttonPos_f;
 	int buttonList_i=0;
 
+	public GameObject back_obj, bottom_obj, incubator_obj;
+
 
 	// Use this for initialization
 	void Start () {
