@@ -17636,6 +17636,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Book_obj: {fileID: 398710922}
   bookInfo_obj: {fileID: 0}
   infoImage1_obj: {fileID: 1873663881}
