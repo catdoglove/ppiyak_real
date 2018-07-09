@@ -1,12 +1,15 @@
 fileFormatVersion: 2
 guid: d5e617c8801d50b4dba415e2e4cd76d5
-timeCreated: 1530861547
+timeCreated: 1531115399
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: bookandshop_btn(150x130)_0
     21300002: bookandshop_btn(150x130)_1
     21300004: bookandshop_btn(150x130)_2
+    21300006: bookandshop_btn(150x130)_3
+    21300008: bookandshop_btn(150x130)_4
+    21300010: bookandshop_btn(150x130)_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -94,7 +97,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 130
         width: 150
         height: 130
       alignment: 0
@@ -108,7 +111,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 0
+        y: 130
         width: 150
         height: 130
       alignment: 0
@@ -119,6 +122,48 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: bookandshop_btn(150x130)_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 130
+        width: 150
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bookandshop_btn(150x130)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bookandshop_btn(150x130)_4
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 150
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bookandshop_btn(150x130)_5
       rect:
         serializedVersion: 2
         x: 300

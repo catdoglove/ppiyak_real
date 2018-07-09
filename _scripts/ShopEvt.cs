@@ -1,25 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopEvt : MonoBehaviour {
 
-	public GameObject shop_obj;
+	public GameObject shop_obj, shop_btn_bg, shop_btn_under, shop_btn_nest;
 	public GameObject GM;
+    public Sprite [] btnSpr; //0,3 1,4 2,5
 
 	public GameObject back_obj,bottom_obj,incubator_obj;
 
 	int shopIndex_i;
+    
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 	public void shopOpen(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (true);
 	}
@@ -32,17 +26,27 @@ public class ShopEvt : MonoBehaviour {
 		back_obj.SetActive (true);
 		bottom_obj.SetActive (false);
 		incubator_obj.SetActive (false);
-	}
+        shop_btn_bg.GetComponent<Image>().sprite = btnSpr[0];
+        shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
+        shop_btn_nest.GetComponent<Image>().sprite = btnSpr[5];
+
+    }
 	public void shopChangeBottom(){
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (true);
 		incubator_obj.SetActive (false);
-	}
+        shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
+        shop_btn_under.GetComponent<Image>().sprite = btnSpr[1];
+        shop_btn_nest.GetComponent<Image>().sprite = btnSpr[5];
+    }
 	public void shopChangeincubator(){
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (false);
 		incubator_obj.SetActive (true);
-	}
+        shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
+        shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
+        shop_btn_nest.GetComponent<Image>().sprite = btnSpr[2];
+    }
 
 	public void buyShopBack0(){
 		shopIndex_i = 0;
