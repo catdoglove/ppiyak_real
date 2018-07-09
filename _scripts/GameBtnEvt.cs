@@ -11,7 +11,18 @@ public class GameBtnEvt : MonoBehaviour {
 	float buttonPos_f;
 	int buttonList_i=0;
 
-	public GameObject back_obj, bottom_obj, incubator_obj;
+	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj;
+	public Sprite[] back_spr, bottom_spr, incubator_spr;
+
+	void Awake(){
+		for (int i = 0; i < 20; i++) {
+			i++;
+			back_spr[i-1]=Resources.Load<Sprite>("thema/bg("+i+")");
+			bottom_spr[i-1]=Resources.Load<Sprite>("thema/fl("+i+")");
+			incubator_spr[i-1]=Resources.Load<Sprite>("thema/pipe("+i+")");
+			i--;
+		}
+	}
 
 
 	// Use this for initialization

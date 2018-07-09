@@ -107,16 +107,24 @@ public class ShopEvt : MonoBehaviour {
 	}
 
 	public void buyShopBack(){
-		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
-			
-		}
+		//if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
+			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
+		//} else {
+		//}
 	}
 
 	public void buyShopBottom(){
-
+		//if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
+		GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
+		//} else {
+		//}
 	}
 		
 	public void buyShopIncubator(){
-
+		//if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
+		GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+		GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+		//} else {
+		//}
 	}
 }

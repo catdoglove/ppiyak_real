@@ -43,9 +43,9 @@ public class BookEvt : MonoBehaviour {
 			GM.GetComponent<BookEvt> ().bookGM [i] = GameObject.Find (GM.GetComponent<BookEvt> ().bookGM_str);
 		}
 		for (int i = 0; i < 5; i++) {
-			if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
+			//if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
 				GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [i+1];
-			}
+			//}
 		}
 
 
@@ -114,7 +114,7 @@ public class BookEvt : MonoBehaviour {
 	public void bookClose(){
 		Book_obj.SetActive (false);
 		infoBackClose ();
-		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
+		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (false);
 	}
 
 }
