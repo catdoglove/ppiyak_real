@@ -11,7 +11,7 @@ public class GameBtnEvt : MonoBehaviour {
 	float buttonPos_f;
 	int buttonList_i=0;
 
-	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj;
+	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj, titleImage_obj;
 	public Sprite[] back_spr, bottom_spr, incubator_spr;
 
 	void Awake(){
@@ -24,12 +24,11 @@ public class GameBtnEvt : MonoBehaviour {
 		}
 	}
 
+    public void closeTitle()
+    {
+        titleImage_obj.SetActive(false);
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-
-	}
 
 	public void openButton(){
 		if (buttonList_i == 0) {
