@@ -32,7 +32,7 @@ public class GameBtnEvt : MonoBehaviour {
         titleImage_obj.SetActive(false);
     }
 
-<<<<<<< HEAD
+
 	// Use this for initialization
 	void Start () {
 		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
@@ -45,8 +45,7 @@ public class GameBtnEvt : MonoBehaviour {
 		gameIncubator2_obj.GetComponent<Image> ().sprite = incubator_spr [cash_i+1];
 
 	}
-=======
->>>>>>> 807ae8af5f1d9c0cb820bdb3da9e49314ddaf2b2
+
 
 	public void openButton(){
 		if (buttonList_i == 0) {
