@@ -11,7 +11,7 @@ public class GameBtnEvt : MonoBehaviour {
 	float buttonPos_f;
 	int buttonList_i=0;
 
-	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj;
+	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj, titleImage_obj;
 	public Sprite[] back_spr, bottom_spr, incubator_spr;
 
 	//돈
@@ -27,7 +27,12 @@ public class GameBtnEvt : MonoBehaviour {
 		}
 	}
 
+    public void closeTitle()
+    {
+        titleImage_obj.SetActive(false);
+    }
 
+<<<<<<< HEAD
 	// Use this for initialization
 	void Start () {
 		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
@@ -40,6 +45,8 @@ public class GameBtnEvt : MonoBehaviour {
 		gameIncubator2_obj.GetComponent<Image> ().sprite = incubator_spr [cash_i+1];
 
 	}
+=======
+>>>>>>> 807ae8af5f1d9c0cb820bdb3da9e49314ddaf2b2
 
 	public void openButton(){
 		if (buttonList_i == 0) {
