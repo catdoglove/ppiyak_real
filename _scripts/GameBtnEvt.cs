@@ -14,6 +14,9 @@ public class GameBtnEvt : MonoBehaviour {
 	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj;
 	public Sprite[] back_spr, bottom_spr, incubator_spr;
 
+	//돈
+	public int gameCoin_i;
+
 	void Awake(){
 		for (int i = 0; i < 20; i++) {
 			i++;
@@ -27,7 +30,14 @@ public class GameBtnEvt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
+		int cash_i = PlayerPrefs.GetInt ("backset",-1);
+		gameBack_obj.GetComponent<Image> ().sprite = back_spr [cash_i+1];
+		cash_i = PlayerPrefs.GetInt ("bottomset",-1);
+		gameBottom_obj.GetComponent<Image> ().sprite = bottom_spr [cash_i+1];
+		cash_i = PlayerPrefs.GetInt ("incubatorset",-1);
+		gameIncubator1_obj.GetComponent<Image> ().sprite = incubator_spr [cash_i+1];
+		gameIncubator2_obj.GetComponent<Image> ().sprite = incubator_spr [cash_i+1];
 
 	}
 
@@ -46,6 +56,9 @@ public class GameBtnEvt : MonoBehaviour {
 			buttonList_i = 0;
 		}
 	}
+
+	//코루틴
+	#region
 
 	IEnumerator btnMove(){
 		while (gameButtons_obj[0].transform.position.x <= 1.99f)
@@ -111,4 +124,6 @@ public class GameBtnEvt : MonoBehaviour {
 		}
 		//infoCardWid.SetActive (false);
 	}
+
+	#endregion
 }

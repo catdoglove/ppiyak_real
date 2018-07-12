@@ -10,14 +10,16 @@ public class ShopEvt : MonoBehaviour {
     public Sprite [] btnSpr; //0,3 1,4 2,5
 
 	public GameObject back_obj,bottom_obj,incubator_obj;
+	public GameObject shopBuyPopup_obj;
+	public int[] backPrice_i, bottomPrice_i, incubatorPrice_i;
 
-	int shopIndex_i;
+	int shopIndex_i,shopItem_i;
     
-
+	//상점열기
 	public void shopOpen(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (true);
 	}
-
+	//상점닫기
 	public void shopClose(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (false);
 	}
@@ -47,6 +49,8 @@ public class ShopEvt : MonoBehaviour {
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
         shop_btn_nest.GetComponent<Image>().sprite = btnSpr[2];
     }
+	//샵구매인덱스
+	#region 
 
 	public void buyShopBack0(){
 		shopIndex_i = 0;
@@ -106,17 +110,25 @@ public class ShopEvt : MonoBehaviour {
 		shopIndex_i = 18;
 	}
 
+	#endregion
+
 	public void buyShopBack(){
 		//if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
+		PlayerPrefs.SetInt ("backset", shopIndex_i);
 		//} else {
+		//shopBuyPopup_obj.SetActive(true);
+		//shopItem_i = 1;
 		//}
 	}
 
 	public void buyShopBottom(){
 		//if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
 		GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
+		PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 		//} else {
+		//shopBuyPopup_obj.SetActive(true);
+		//shopItem_i = 2;
 		//}
 	}
 		
@@ -124,7 +136,50 @@ public class ShopEvt : MonoBehaviour {
 		//if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
 		GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+		PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
 		//} else {
+		//shopBuyPopup_obj.SetActive(true);
+		//shopItem_i = 3;
 		//}
 	}
+
+	public void buyYes(){
+		int price = 0;
+
+		switch (shopItem_i) {
+		case 1:
+			price = backPrice_i[shopIndex_i];
+			break;
+		case 2:
+			price = bottomPrice_i[shopIndex_i];
+			break;
+		case 3:
+			price = incubatorPrice_i[shopIndex_i];
+			break;
+		}
+		if (GM.GetComponent<GameBtnEvt> ().gameCoin_i >= price) {
+			switch (shopItem_i) {
+			case 1:
+				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
+				PlayerPrefs.SetInt ("backset", shopIndex_i);
+				break;
+			case 2:
+				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
+				PlayerPrefs.SetInt ("bottomset", shopIndex_i);
+				break;
+			case 3:
+				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+				PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
+				break;
+			}
+		} else {
+			//돈부족
+		}
+	}
+
+	public void buyNo(){
+		shopBuyPopup_obj.SetActive (false);
+	}
+
 }

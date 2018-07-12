@@ -57,10 +57,7 @@ public class BookEvt : MonoBehaviour {
 			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakAwesome_spr [i-13];
 			//}
 		}
-
-
-
-
+			
 		/*
 		//배열에 들어있는 병아리들 이미지 띄우기
 		for(int i=0;i<bookBasic_obj.Length;i++){
