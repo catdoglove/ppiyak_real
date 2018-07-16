@@ -145,7 +145,6 @@ public class ShopEvt : MonoBehaviour {
 
 	public void buyYes(){
 		int price = 0;
-
 		switch (shopItem_i) {
 		case 1:
 			price = backPrice_i[shopIndex_i];
