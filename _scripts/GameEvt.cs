@@ -59,19 +59,19 @@ public class GameEvt : MonoBehaviour {
 				rand = PlayerPrefs.GetInt ("basic_unlock", 5);
 				eggIndex_i = Random.Range (1, rand);
 				rands = Random.Range (0, 2);
-				maxNum_i = Random.Range (2, 5);
+				maxNum_i = Random.Range (2, 100);
 				break;
 			case 1:
 				rand = PlayerPrefs.GetInt ("good_unlock",8);
 				eggIndex_i = Random.Range (0,rand);
 				rands = Random.Range (2, 2);
-				maxNum_i = Random.Range (5, 7);
+				maxNum_i = Random.Range (5, 200);
 				break;
 			case 2:
 				rand = PlayerPrefs.GetInt ("awesome_unlock",7);
 				eggIndex_i = Random.Range (0,rand);
 				rands = Random.Range (4, 2);
-				maxNum_i = Random.Range (8, 10);
+				maxNum_i = Random.Range (8, 500);
 				break;
 			case 3:
 				maxNum_i = Random.Range (11, 21);

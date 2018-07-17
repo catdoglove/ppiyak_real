@@ -17,6 +17,9 @@ public class GameBtnEvt : MonoBehaviour {
 	//돈
 	public int gameCoin_i;
 
+	//처음시작
+	string str;
+
 	void Awake(){
 		for (int i = 0; i < 20; i++) {
 			i++;
@@ -35,6 +38,78 @@ public class GameBtnEvt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//게임을처음시작했을때고유아이디를준다.
+		//처음할때 자신만의 코드를 만들어줌
+		int c=0;
+		if (c == PlayerPrefs.GetInt ("first", 0)) {
+			for (int i = 0; i < 16; i++) {
+				int a = Random.Range (0, 16);//0~15
+
+				switch (a) {
+				case 0:
+					str = str + "0";
+					break;
+				case 1:
+					str = str + "1";
+					break;
+				case 2:
+					str = str + "2";
+					break;
+				case 3:
+					str = str + "3";
+					break;
+				case 4:
+					str = str + "4";
+					break;
+				case 5:
+					str = str + "5";
+					break;
+				case 6:
+					str = str + "6";
+					break;
+				case 7:
+					str = str + "7";
+					break;
+				case 8:
+					str = str + "8";
+					break;
+				case 9:
+					str = str + "9";
+					break;
+				case 10:
+					str = str + "a";
+					break;
+				case 11:
+					str = str + "b";
+					break;
+				case 12:
+					str = str + "c";
+					break;
+				case 13:
+					str = str + "d";
+					break;
+				case 14:
+					str = str + "e";
+					break;
+				case 15:
+					str = str + "f";
+					break;
+				default:
+					break;
+				}
+
+				//코인이 저장되는 이름을 자기의 코드로해줌
+			}
+
+			PlayerPrefs.SetString ("code", str);
+			//PlayerPrefs.SetInt ("first", 1);
+			//PlayerPrefs.Save ();
+		}//endOfIf
+
+		str = PlayerPrefs.GetString ("code", "");
+		//gameCoin_i = PlayerPrefs.GetInt (str, 0);
+
+
 		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
 		int cash_i = PlayerPrefs.GetInt ("backset",-1);
 		gameBack_obj.GetComponent<Image> ().sprite = back_spr [cash_i+1];

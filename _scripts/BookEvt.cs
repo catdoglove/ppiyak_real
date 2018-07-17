@@ -109,7 +109,6 @@ public class BookEvt : MonoBehaviour {
 			GM.GetComponent<BookEvt> ().infoText2_txt.text=""+GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
 			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
 		}
-
 		//infoImage_obj.GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [c_Num];
 	}
 
