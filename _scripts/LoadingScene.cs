@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class LoadingScene : MonoBehaviour {
 
 	AsyncOperation async;
-	int skip = 0;
 	Color color;
 	public GameObject logoImg;
 

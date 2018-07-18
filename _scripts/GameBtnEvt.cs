@@ -121,8 +121,18 @@ public class GameBtnEvt : MonoBehaviour {
 
 	}
 
+    void Update()
+    {
+        //나가기
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+  
 
-	public void openButton(){
+
+        public void openButton(){
 		if (buttonList_i == 0) {
 			StopCoroutine ("btnMoveBack");
 			StopCoroutine ("imgFadeOut");
