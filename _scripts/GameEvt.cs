@@ -50,6 +50,7 @@ public class GameEvt : MonoBehaviour {
 
 	public void touchEgg (){
 
+		//-1일때알이부화되어있다 이때터치하면새로운랜덤변수들을정해준다
 		if (touchNum_i == -1) {
 			eggRare_i = Random.Range (0, 3);
 			int rand = 1;
@@ -87,7 +88,7 @@ public class GameEvt : MonoBehaviour {
 		eggRare_i = PlayerPrefs.GetInt ("rare" + c_Num, 0);
 		maxNum_i = PlayerPrefs.GetInt ("max"+c_Num,5);
 		touchNum_i = PlayerPrefs.GetInt ("touch" + c_Num, 0);
-		eggIndex_i = PlayerPrefs.GetInt ("index"+c_Num,0);
+		eggIndex_i = PlayerPrefs.GetInt ("index"+c_Num,1);
 		//누르면알로바뀜
 		touchNum_i++;
 		PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);

@@ -48,12 +48,12 @@ public class BookEvt : MonoBehaviour {
 			//}
 		}
 		for (int i = 5; i < 13; i++) {
-			//if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
+			//if (PlayerPrefs.GetInt ("good_book" + (i-5), 0) == 1) {
 			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakGood_spr [i-5];
 			//}
 		}
 		for (int i = 13; i < 20; i++) {
-			//if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
+			//if (PlayerPrefs.GetInt ("awesome_book" + (i-13), 0) == 1) {
 			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakAwesome_spr [i-13];
 			//}
 		}
@@ -88,36 +88,59 @@ public class BookEvt : MonoBehaviour {
 	public void bookInfoOpen(){
 		//자신의 이름을 불러옴
 		string str=this.gameObject.name;
-		//자신의 이름에 달린 번호를 불러옴
+		//자신의 이름에 달린 번호를 불러옴 0부터세어서6번째자리부터 2글자를가져온다
 		int c_Num = int.Parse(str.Substring (6,2));
+		//계산하기위한임시변수
 		int cal = c_Num;
-		while (cal > 0) {
-			cal = cal - 2; 
-		}
-		if (cal == 0) {
-			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (true);
-			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
-			GM.GetComponent<BookEvt> ().infoImage1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
-			GM.GetComponent<BookEvt> ().infoName1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
-			GM.GetComponent<BookEvt> ().infoText1_txt.text=""+GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
-			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
+		//도감에등록되어있는지확인하기위한지역변수
+		int ck=0;
+		//도감확인
+		if (c_Num >= 13) {
+			if (PlayerPrefs.GetInt ("basic_book" + c_Num, 0) == 1) {
+				ck = -1;
+			}
+		} else if (c_Num >= 5) {
+			if (PlayerPrefs.GetInt ("good_book" + c_Num, 0) == 1) {
+				ck = -1;
+			}
 		} else {
-			GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (true);
-			GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
-			GM.GetComponent<BookEvt> ().infoImage2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
-			GM.GetComponent<BookEvt> ().infoName2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
-			GM.GetComponent<BookEvt> ().infoText2_txt.text=""+GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
-			GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
+			if (PlayerPrefs.GetInt ("awesome_book" + c_Num, 0) == 1) {
+				ck = -1;
+			}
 		}
-		//infoImage_obj.GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [c_Num];
+		//도감에열린상태일때만띄워준다
+		if (ck == -1) {
+			while (cal > 0) {
+				cal = cal - 2; 
+			}
+			if (cal == 0) {
+				GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (true);
+				GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
+				GM.GetComponent<BookEvt> ().infoImage1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+				GM.GetComponent<BookEvt> ().infoName1_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
+				GM.GetComponent<BookEvt> ().infoText1_txt.text = "" + GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
+				GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
+			} else {
+				GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (true);
+				GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (true);
+				GM.GetComponent<BookEvt> ().infoImage2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoImage_spr [c_Num];
+				GM.GetComponent<BookEvt> ().infoName2_obj.GetComponent<Image> ().sprite = GM.GetComponent<BookEvt> ().infoName_spr [c_Num];
+				GM.GetComponent<BookEvt> ().infoText2_txt.text = "" + GM.GetComponent<BookEvt> ().data [c_Num] ["info"];
+				GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
+			}
+			//infoImage_obj.GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [c_Num];
+
+		}
 	}
 
+	//자세히보기닫기
 	public void infoBackClose(){
 		GM.GetComponent<BookEvt> ().infoBack_obj.SetActive (false);
 		GM.GetComponent<BookEvt> ().infoImage1_obj.SetActive (false);
 		GM.GetComponent<BookEvt> ().infoImage2_obj.SetActive (false);
 	}
 
+	//도감닫기
 	public void bookClose(){
 		Book_obj.SetActive (false);
 		infoBackClose ();
