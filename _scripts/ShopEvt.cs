@@ -118,7 +118,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("backset", shopIndex_i);
 		//} else {
 		//shopBuyPopup_obj.SetActive(true);
-		//shopItem_i = 1;
+		shopItem_i = 1;
 		//}
 	}
 
@@ -128,7 +128,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 		//} else {
 		//shopBuyPopup_obj.SetActive(true);
-		//shopItem_i = 2;
+		shopItem_i = 2;
 		//}
 	}
 		
@@ -139,7 +139,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
 		//} else {
 		//shopBuyPopup_obj.SetActive(true);
-		//shopItem_i = 3;
+		shopItem_i = 3;
 		//}
 	}
 

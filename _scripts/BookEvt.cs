@@ -43,19 +43,19 @@ public class BookEvt : MonoBehaviour {
 			GM.GetComponent<BookEvt> ().bookGM [i] = GameObject.Find (GM.GetComponent<BookEvt> ().bookGM_str);
 		}
 		for (int i = 0; i < 5; i++) {
-			//if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
+			if (PlayerPrefs.GetInt ("basic_book" + i, 0) == 1) {
 				GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [i+1];
-			//}
+			}
 		}
 		for (int i = 5; i < 13; i++) {
-			//if (PlayerPrefs.GetInt ("good_book" + (i-5), 0) == 1) {
+			if (PlayerPrefs.GetInt ("good_book" + (i-5), 0) == 1) {
 			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakGood_spr [i-5];
-			//}
+			}
 		}
 		for (int i = 13; i < 20; i++) {
-			//if (PlayerPrefs.GetInt ("awesome_book" + (i-13), 0) == 1) {
+			if (PlayerPrefs.GetInt ("awesome_book" + (i-13), 0) == 1) {
 			GM.GetComponent<BookEvt> ().bookGM [i].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakAwesome_spr [i-13];
-			//}
+			}
 		}
 			
 		/*

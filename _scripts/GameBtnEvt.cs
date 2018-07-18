@@ -102,12 +102,12 @@ public class GameBtnEvt : MonoBehaviour {
 			}
 
 			PlayerPrefs.SetString ("code", str);
-			//PlayerPrefs.SetInt ("first", 1);
-			//PlayerPrefs.Save ();
+			PlayerPrefs.SetInt ("first", 1);
+			PlayerPrefs.Save ();
 		}//endOfIf
 
 		str = PlayerPrefs.GetString ("code", "");
-		//gameCoin_i = PlayerPrefs.GetInt (str, 0);
+		gameCoin_i = PlayerPrefs.GetInt (str, 0);
 
 
 		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
