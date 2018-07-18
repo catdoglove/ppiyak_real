@@ -105,6 +105,7 @@ public class GameEvt : MonoBehaviour {
 			string str = PlayerPrefs.GetString ("code", "");
 			GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + 100;
+			Debug.Log (GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 
 		} else {

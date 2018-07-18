@@ -113,34 +113,34 @@ public class ShopEvt : MonoBehaviour {
 	#endregion
 
 	public void buyShopBack(){
-		//if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
+		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 		PlayerPrefs.SetInt ("backset", shopIndex_i);
-		//} else {
-		//shopBuyPopup_obj.SetActive(true);
+		} else {
+		shopBuyPopup_obj.SetActive(true);
 		shopItem_i = 1;
-		//}
+		}
 	}
 
 	public void buyShopBottom(){
-		//if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
+		if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
 		GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
 		PlayerPrefs.SetInt ("bottomset", shopIndex_i);
-		//} else {
-		//shopBuyPopup_obj.SetActive(true);
+		} else {
+		shopBuyPopup_obj.SetActive(true);
 		shopItem_i = 2;
-		//}
+		}
 	}
 		
 	public void buyShopIncubator(){
-		//if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
+		if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
 		GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
-		//} else {
-		//shopBuyPopup_obj.SetActive(true);
+		} else {
+		shopBuyPopup_obj.SetActive(true);
 		shopItem_i = 3;
-		//}
+		}
 	}
 
 	public void buyYes(){
@@ -161,20 +161,31 @@ public class ShopEvt : MonoBehaviour {
 			case 1:
 				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("backset", shopIndex_i);
+				PlayerPrefs.SetInt ("back" + shopIndex_i, 1);
 				break;
 			case 2:
 				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("bottomset", shopIndex_i);
+				PlayerPrefs.SetInt ("bottom" + shopIndex_i, 1);
 				break;
 			case 3:
 				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
+				PlayerPrefs.SetInt ("incubator" + shopIndex_i, 1);
 				break;
 			}
+			string str = PlayerPrefs.GetString ("code", "");
+			GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
+			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i - price;
+			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 		} else {
 			//돈부족
+			Debug.Log ("부족"+GM.GetComponent<GameBtnEvt> ().gameCoin_i);
+
 		}
+		PlayerPrefs.Save ();
+		shopBuyPopup_obj.SetActive (false);
 	}
 
 	public void buyNo(){
