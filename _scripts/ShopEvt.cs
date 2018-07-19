@@ -12,12 +12,38 @@ public class ShopEvt : MonoBehaviour {
 	public GameObject back_obj,bottom_obj,incubator_obj;
 	public GameObject shopBuyPopup_obj;
 	public int[] backPrice_i, bottomPrice_i, incubatorPrice_i;
+	public GameObject[] backLock_obj,bottomLock_obj,incubatorLock_obj;
 
 	int shopIndex_i,shopItem_i;
+
+	public Text shopCoin_txt;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+
+
     
 	//상점열기
 	public void shopOpen(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (true);
+		if(backLock_obj[0]==null){
+			backLock_obj = GameObject.FindGameObjectsWithTag ("backlock");
+		}
+
+		for(int i=0;i<16;i++){
+			if (PlayerPrefs.GetInt ("back" + i, 0) == 1) {
+				backLock_obj [i].SetActive (false);
+			}
+
+		}
+		string str = PlayerPrefs.GetString ("code", "");
+		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
+		shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt> ().gameCoin_i;
+
+		//여기에잠금코딩
+
 	}
 	//상점닫기
 	public void shopClose(){
@@ -37,14 +63,31 @@ public class ShopEvt : MonoBehaviour {
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (true);
 		incubator_obj.SetActive (false);
+		if(bottomLock_obj[0]==null){
+			bottomLock_obj = GameObject.FindGameObjectsWithTag ("bottomlock");
+		}
+		for(int i=0;i<16;i++){
+			if (PlayerPrefs.GetInt ("bottom" + i, 0) == 1) {
+				bottomLock_obj [i].SetActive (false);
+			}
+		}
         shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[1];
         shop_btn_nest.GetComponent<Image>().sprite = btnSpr[5];
     }
 	public void shopChangeincubator(){
+		incubator_obj.SetActive (true);
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (false);
-		incubator_obj.SetActive (true);
+
+		if(incubatorLock_obj[0]==null){
+			incubatorLock_obj = GameObject.FindGameObjectsWithTag ("incubator");
+		}
+		for(int i=0;i<16;i++){
+			if (PlayerPrefs.GetInt ("incubator" + i, 0) == 1) {
+				incubatorLock_obj [i].SetActive (false);
+			}
+		}
         shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
         shop_btn_nest.GetComponent<Image>().sprite = btnSpr[2];
@@ -178,6 +221,7 @@ public class ShopEvt : MonoBehaviour {
 			string str = PlayerPrefs.GetString ("code", "");
 			GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i - price;
+			shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt> ().gameCoin_i;
 			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 		} else {
 			//돈부족

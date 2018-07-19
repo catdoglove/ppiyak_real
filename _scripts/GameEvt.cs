@@ -120,7 +120,7 @@ public class GameEvt : MonoBehaviour {
 		switch (eggRare_i) {
 		case 0:
 			GM.GetComponent<GameEvt> ().ppiyak_obj [c_Num].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [eggIndex_i];
-			PlayerPrefs.SetInt ("basic_book"+eggIndex_i,1);
+			PlayerPrefs.SetInt ("basic_book"+(eggIndex_i-1),1);
 			break;
 		case 1:
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakGood_spr [eggIndex_i];

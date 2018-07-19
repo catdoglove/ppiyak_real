@@ -96,15 +96,15 @@ public class BookEvt : MonoBehaviour {
 		int ck=0;
 		//도감확인
 		if (c_Num >= 13) {
-			if (PlayerPrefs.GetInt ("basic_book" + c_Num, 0) == 1) {
+			if (PlayerPrefs.GetInt ("awesome_book" + (c_Num-13), 0) == 1) {
 				ck = -1;
 			}
 		} else if (c_Num >= 5) {
-			if (PlayerPrefs.GetInt ("good_book" + c_Num, 0) == 1) {
+			if (PlayerPrefs.GetInt ("good_book" + (c_Num-5), 0) == 1) {
 				ck = -1;
 			}
 		} else {
-			if (PlayerPrefs.GetInt ("awesome_book" + c_Num, 0) == 1) {
+			if (PlayerPrefs.GetInt ("basic_book" + c_Num, 0) == 1) {
 				ck = -1;
 			}
 		}
