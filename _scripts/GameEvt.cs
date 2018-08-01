@@ -12,6 +12,7 @@ public class GameEvt : MonoBehaviour {
 	public Sprite[] egg_spr;
 
 	int c_Num;
+	int addCoin;
 
 	void Awake(){
 		//스프라이트동적할당
@@ -104,8 +105,7 @@ public class GameEvt : MonoBehaviour {
 			ppiyakChange ();
 			string str = PlayerPrefs.GetString ("code", "");
 			GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
-			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + 100;
-			Debug.Log (GM.GetComponent<GameBtnEvt> ().gameCoin_i);
+			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + addCoin;
 			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 
 		} else {
@@ -120,13 +120,16 @@ public class GameEvt : MonoBehaviour {
 		switch (eggRare_i) {
 		case 0:
 			GM.GetComponent<GameEvt> ().ppiyak_obj [c_Num].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakBasic_spr [eggIndex_i];
+			addCoin = 100;
 			PlayerPrefs.SetInt ("basic_book"+(eggIndex_i-1),1);
 			break;
 		case 1:
+			addCoin = 500;
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakGood_spr [eggIndex_i];
 			PlayerPrefs.SetInt ("good_book"+eggIndex_i,1);
 			break;
 		case 2:
+			addCoin = 1000;
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [eggIndex_i];
 			PlayerPrefs.SetInt ("awesome_book"+eggIndex_i,1);
 			break;

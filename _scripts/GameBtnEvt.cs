@@ -107,8 +107,8 @@ public class GameBtnEvt : MonoBehaviour {
 		}//endOfIf
 
 		str = PlayerPrefs.GetString ("code", "");
-		gameCoin_i = PlayerPrefs.GetInt (str, 10000);
-
+		gameCoin_i = PlayerPrefs.GetInt (str, 0);
+		//PlayerPrefs.SetInt (str, 0);
 
 		//게임시작_화면의 배경,부화기,바닥을 저장된값으로변경
 		int cash_i = PlayerPrefs.GetInt ("backset",-1);

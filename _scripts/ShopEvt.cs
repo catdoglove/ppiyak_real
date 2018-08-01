@@ -14,42 +14,38 @@ public class ShopEvt : MonoBehaviour {
 	public int[] backPrice_i, bottomPrice_i, incubatorPrice_i;
 	public GameObject[] backLock_obj,bottomLock_obj,incubatorLock_obj;
 
+	//효과 설명
+
+	public string[] BackEffect_str,BottomEffect_str,incubatorEffect_str;
+	public Text shopEffect_txt;
+
 	int shopIndex_i,shopItem_i;
 
 	public Text shopCoin_txt;
+	public GameObject coinPopup_obj;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
-
-
-    
 	//상점열기
 	public void shopOpen(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (true);
 		if(backLock_obj[0]==null){
 			backLock_obj = GameObject.FindGameObjectsWithTag ("backlock");
 		}
-
 		for(int i=0;i<16;i++){
 			if (PlayerPrefs.GetInt ("back" + i, 0) == 1) {
 				backLock_obj [i].SetActive (false);
 			}
-
 		}
 		string str = PlayerPrefs.GetString ("code", "");
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 		shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt> ().gameCoin_i;
-
-		//여기에잠금코딩
-
 	}
 	//상점닫기
 	public void shopClose(){
 		GM.GetComponent<ShopEvt> ().shop_obj.SetActive (false);
 	}
-
 	public void shopChangeBack(){
 		back_obj.SetActive (true);
 		bottom_obj.SetActive (false);
@@ -57,7 +53,6 @@ public class ShopEvt : MonoBehaviour {
         shop_btn_bg.GetComponent<Image>().sprite = btnSpr[0];
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
         shop_btn_nest.GetComponent<Image>().sprite = btnSpr[5];
-
     }
 	public void shopChangeBottom(){
 		back_obj.SetActive (false);
@@ -161,6 +156,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("backset", shopIndex_i);
 		} else {
 		shopBuyPopup_obj.SetActive(true);
+			//shopEffect_txt.text = BackEffect_str [shopIndex_i];
 		shopItem_i = 1;
 		}
 	}
@@ -171,6 +167,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 		} else {
 		shopBuyPopup_obj.SetActive(true);
+			//shopEffect_txt.text = BottomEffect_str [shopIndex_i];
 		shopItem_i = 2;
 		}
 	}
@@ -182,6 +179,7 @@ public class ShopEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
 		} else {
 		shopBuyPopup_obj.SetActive(true);
+			//shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
 		shopItem_i = 3;
 		}
 	}
@@ -205,17 +203,20 @@ public class ShopEvt : MonoBehaviour {
 				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("backset", shopIndex_i);
 				PlayerPrefs.SetInt ("back" + shopIndex_i, 1);
+				backLock_obj [shopIndex_i].SetActive (false);
 				break;
 			case 2:
 				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 				PlayerPrefs.SetInt ("bottom" + shopIndex_i, 1);
+				bottomLock_obj [shopIndex_i].SetActive (false);
 				break;
 			case 3:
 				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
 				PlayerPrefs.SetInt ("incubator" + shopIndex_i, 1);
+				incubatorLock_obj [shopIndex_i].SetActive (false);
 				break;
 			}
 			string str = PlayerPrefs.GetString ("code", "");
@@ -224,9 +225,7 @@ public class ShopEvt : MonoBehaviour {
 			shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt> ().gameCoin_i;
 			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 		} else {
-			//돈부족
-			Debug.Log ("부족"+GM.GetComponent<GameBtnEvt> ().gameCoin_i);
-
+			coinPopup_obj.SetActive (true);
 		}
 		PlayerPrefs.Save ();
 		shopBuyPopup_obj.SetActive (false);
@@ -234,6 +233,9 @@ public class ShopEvt : MonoBehaviour {
 
 	public void buyNo(){
 		shopBuyPopup_obj.SetActive (false);
+	}
+	public void coinClose(){
+		coinPopup_obj.SetActive (false);
 	}
 
 }
