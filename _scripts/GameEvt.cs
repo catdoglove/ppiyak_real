@@ -58,6 +58,8 @@ public class GameEvt : MonoBehaviour {
 		//-1일때알이부화되어있다 이때터치하면새로운랜덤변수들을정해준다
 		if (touchNum_i == -1) {
 			touchNum_i++;
+			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
+			PlayerPrefs.Save ();
 			eggPopup_obj.SetActive (true);
 		} else {
 		
@@ -86,7 +88,7 @@ public class GameEvt : MonoBehaviour {
 				ppiyakChange ();
 				string str = PlayerPrefs.GetString ("code", "");
 				GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
-				if (PlayerPrefs.GetInt ("effect_set", 0) == 1) {
+				if (PlayerPrefs.GetInt ("beffect_set", 0) == 1) {
 					addCoin = addCoin + 20;
 				}
 				GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + addCoin;
@@ -145,8 +147,18 @@ public class GameEvt : MonoBehaviour {
 
 
 	public void eggOk(){
+		eggRare_i = Random.Range (0, 100);
+		if (eggRare_i >= 90) {
+			eggRare_i = 2;
 
-		eggRare_i = Random.Range (0, 3);
+		} else if (eggRare_i >= 65) {
+			eggRare_i = 1;
+		} else {
+			eggRare_i = 0;
+		}
+		//eggRare_i = Random.Range (0, 3);
+		//알나오는 확률
+
 		int rand = 1;
 		int rands = 0;
 		switch (eggRare_i) {
@@ -172,7 +184,7 @@ public class GameEvt : MonoBehaviour {
 			maxNum_i = Random.Range (11, 21);
 			break;
 		}
-		if (PlayerPrefs.GetInt ("effect_set", 0) == 2) {
+		if (PlayerPrefs.GetInt ("ieffect_set", 0) == 2) {
 			maxNum_i = maxNum_i - 20;
 			if (maxNum_i < 0) {
 				maxNum_i = 1;
