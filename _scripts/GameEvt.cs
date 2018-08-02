@@ -10,9 +10,12 @@ public class GameEvt : MonoBehaviour {
 	public GameObject[] ppiyak_obj;
 	public Sprite[] ppiyakBasic_spr,ppiyakGood_spr,ppiyakAwesome_spr;
 	public Sprite[] egg_spr;
+	public GameObject eggPopup_obj;
 
 	int c_Num;
 	int addCoin;
+
+	public int fever;
 
 	void Awake(){
 		//스프라이트동적할당
@@ -39,6 +42,7 @@ public class GameEvt : MonoBehaviour {
 			eggIndex_i = PlayerPrefs.GetInt ("index"+c_Num,0);
 			//병아리이미지 바꾸기
 			if (touchNum_i == -1) {
+				
 				ppiyakChange ();
 			} else {
 				ppiyakChangeEgg ();
@@ -53,66 +57,47 @@ public class GameEvt : MonoBehaviour {
 
 		//-1일때알이부화되어있다 이때터치하면새로운랜덤변수들을정해준다
 		if (touchNum_i == -1) {
-			eggRare_i = Random.Range (0, 3);
-			int rand = 1;
-			int rands = 0;
-			switch (eggRare_i) {
-			case 0:
-				rand = PlayerPrefs.GetInt ("basic_unlock", 5);
-				eggIndex_i = Random.Range (1, rand);
-				rands = Random.Range (0, 2);
-				maxNum_i = Random.Range (2, 10); //★100
-				break;
-			case 1:
-				rand = PlayerPrefs.GetInt ("good_unlock",8);
-				eggIndex_i = Random.Range (0,rand);
-				rands = Random.Range (2, 2);
-				maxNum_i = Random.Range (5, 10); //★200
-                    break;
-			case 2:
-				rand = PlayerPrefs.GetInt ("awesome_unlock",7);
-				eggIndex_i = Random.Range (0,rand);
-				rands = Random.Range (4, 2);
-				maxNum_i = Random.Range (8, 10); //★500
-                    break;
-			case 3:
-				maxNum_i = Random.Range (11, 21);
-				break;
-			}
-			PlayerPrefs.SetInt ("index" + c_Num, eggIndex_i);
-			PlayerPrefs.SetInt ("rare" + c_Num, eggRare_i);
-			PlayerPrefs.SetInt ("max"+c_Num,maxNum_i);
-			PlayerPrefs.SetInt ("eggrare"+c_Num,rands);
-		}
-		
-		//번호별로 저장된값 불러옴
-		eggRare_i = PlayerPrefs.GetInt ("rare" + c_Num, 0);
-		maxNum_i = PlayerPrefs.GetInt ("max"+c_Num,5);
-		touchNum_i = PlayerPrefs.GetInt ("touch" + c_Num, 0);
-		eggIndex_i = PlayerPrefs.GetInt ("index"+c_Num,1);
-		//누르면알로바뀜
-		touchNum_i++;
-		PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
-
-
-
-		//터치수가채워지면부화
-		if (touchNum_i >= maxNum_i) {
-			//부화됨터치횟수초기화하고다음알의희귀도를지정
-			touchNum_i = -1;
-			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
-			//병아리이미지변경
-			ppiyakChange ();
-			string str = PlayerPrefs.GetString ("code", "");
-			GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
-			GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + addCoin;
-			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
-
+			touchNum_i++;
+			eggPopup_obj.SetActive (true);
 		} else {
-			ppiyakChangeEgg ();
-		}
-		PlayerPrefs.Save ();
+		
+			//번호별로 저장된값 불러옴
+			eggRare_i = PlayerPrefs.GetInt ("rare" + c_Num, 0);
+			maxNum_i = PlayerPrefs.GetInt ("max" + c_Num, 5);
+			touchNum_i = PlayerPrefs.GetInt ("touch" + c_Num, 0);
+			eggIndex_i = PlayerPrefs.GetInt ("index" + c_Num, 1);
 
+
+			touchNum_i++;
+			if (fever > 0) {
+				touchNum_i++;
+			}
+
+			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
+
+
+
+			//터치수가채워지면부화
+			if (touchNum_i >= maxNum_i) {
+				//부화됨터치횟수초기화하고다음알의희귀도를지정
+				touchNum_i = -1;
+				PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
+				//병아리이미지변경
+				ppiyakChange ();
+				string str = PlayerPrefs.GetString ("code", "");
+				GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
+				if (PlayerPrefs.GetInt ("effect_set", 0) == 1) {
+					addCoin = addCoin + 20;
+				}
+				GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + addCoin;
+				PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
+				PlayerPrefs.Save ();
+
+			} else {
+				ppiyakChangeEgg ();
+			}
+			PlayerPrefs.Save ();
+		}
 	}
 
 	void ppiyakChange(){
@@ -156,5 +141,49 @@ public class GameEvt : MonoBehaviour {
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().egg_spr [1];
 			break;
 		}
+	}
+
+
+	public void eggOk(){
+
+		eggRare_i = Random.Range (0, 3);
+		int rand = 1;
+		int rands = 0;
+		switch (eggRare_i) {
+		case 0:
+			rand = PlayerPrefs.GetInt ("basic_unlock", 5);
+			eggIndex_i = Random.Range (1, rand);
+			rands = Random.Range (0, 2);
+			maxNum_i = Random.Range (2, 10); //★100
+			break;
+		case 1:
+			rand = PlayerPrefs.GetInt ("good_unlock",8);
+			eggIndex_i = Random.Range (0,rand);
+			rands = Random.Range (2, 2);
+			maxNum_i = Random.Range (5, 10); //★200
+			break;
+		case 2:
+			rand = PlayerPrefs.GetInt ("awesome_unlock",7);
+			eggIndex_i = Random.Range (0,rand);
+			rands = Random.Range (4, 2);
+			maxNum_i = Random.Range (8, 10); //★500
+			break;
+		case 3:
+			maxNum_i = Random.Range (11, 21);
+			break;
+		}
+		if (PlayerPrefs.GetInt ("effect_set", 0) == 2) {
+			maxNum_i = maxNum_i - 20;
+			if (maxNum_i < 0) {
+				maxNum_i = 1;
+			}
+		}
+
+		PlayerPrefs.SetInt ("index" + c_Num, eggIndex_i);
+		PlayerPrefs.SetInt ("rare" + c_Num, eggRare_i);
+		PlayerPrefs.SetInt ("max"+c_Num,maxNum_i);
+		PlayerPrefs.SetInt ("eggrare"+c_Num,rands);
+
+		eggPopup_obj.SetActive (false);
 	}
 }

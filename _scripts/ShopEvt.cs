@@ -33,7 +33,7 @@ public class ShopEvt : MonoBehaviour {
 		if(backLock_obj[0]==null){
 			backLock_obj = GameObject.FindGameObjectsWithTag ("backlock");
 		}
-		for(int i=0;i<16;i++){
+		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("back" + i, 0) == 1) {
 				backLock_obj [i].SetActive (false);
 			}
@@ -61,7 +61,7 @@ public class ShopEvt : MonoBehaviour {
 		if(bottomLock_obj[0]==null){
 			bottomLock_obj = GameObject.FindGameObjectsWithTag ("bottomlock");
 		}
-		for(int i=0;i<16;i++){
+		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("bottom" + i, 0) == 1) {
 				bottomLock_obj [i].SetActive (false);
 			}
@@ -78,7 +78,7 @@ public class ShopEvt : MonoBehaviour {
 		if(incubatorLock_obj[0]==null){
 			incubatorLock_obj = GameObject.FindGameObjectsWithTag ("incubator");
 		}
-		for(int i=0;i<16;i++){
+		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("incubator" + i, 0) == 1) {
 				incubatorLock_obj [i].SetActive (false);
 			}
@@ -207,23 +207,32 @@ public class ShopEvt : MonoBehaviour {
             PlayerPrefs.SetInt("buyorfail", 3);
             switch (shopItem_i) {
 			case 1:
-				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
+				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("backset", shopIndex_i);
 				PlayerPrefs.SetInt ("back" + shopIndex_i, 1);
-				backLock_obj [shopIndex_i].SetActive (false);
+				if (shopIndex_i == 18) {
+				} else {
+					backLock_obj [shopIndex_i].SetActive (false);
+				}
 				break;
 			case 2:
-				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
+				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 				PlayerPrefs.SetInt ("bottom" + shopIndex_i, 1);
-				bottomLock_obj [shopIndex_i].SetActive (false);
+				if (shopIndex_i == 18) {
+				} else {
+					bottomLock_obj [shopIndex_i].SetActive (false);
+				}
 				break;
 			case 3:
-				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
-				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i + 1];
+				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
 				PlayerPrefs.SetInt ("incubator" + shopIndex_i, 1);
-				incubatorLock_obj [shopIndex_i].SetActive (false);
+				if (shopIndex_i == 18) {
+				} else {
+					incubatorLock_obj [shopIndex_i].SetActive (false);
+				}
 				break;
 			}
 			string str = PlayerPrefs.GetString ("code", "");

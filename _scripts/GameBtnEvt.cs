@@ -28,6 +28,10 @@ public class GameBtnEvt : MonoBehaviour {
 			incubator_spr[i-1]=Resources.Load<Sprite>("thema/pipe("+i+")");
 			i--;
 		}
+		//상점에서부화기를구매해개수를늘렸을때
+		if (PlayerPrefs.GetInt ("incubator_sec", 0) == 1) {
+			gameIncubator2_obj.SetActive (true);
+		}
 	}
 
     public void closeTitle()
