@@ -153,34 +153,40 @@ public class ShopEvt : MonoBehaviour {
 	public void buyShopBack(){
 		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
-		PlayerPrefs.SetInt ("backset", shopIndex_i);
+		    PlayerPrefs.SetInt ("backset", shopIndex_i);
+            PlayerPrefs.SetInt("popupeff", 00);
 		} else {
-		shopBuyPopup_obj.SetActive(true);
+            PlayerPrefs.SetInt("popupeff", 99);
+		    shopBuyPopup_obj.SetActive(true);
 			//shopEffect_txt.text = BackEffect_str [shopIndex_i];
-		shopItem_i = 1;
+		    shopItem_i = 1;
 		}
 	}
 
 	public void buyShopBottom(){
 		if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
-		GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
-		PlayerPrefs.SetInt ("bottomset", shopIndex_i);
-		} else {
-		shopBuyPopup_obj.SetActive(true);
+		    GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
+		    PlayerPrefs.SetInt ("bottomset", shopIndex_i);
+            PlayerPrefs.SetInt("popupeff", 00);
+        } else {
+            PlayerPrefs.SetInt("popupeff", 99);
+		    shopBuyPopup_obj.SetActive(true);
 			//shopEffect_txt.text = BottomEffect_str [shopIndex_i];
-		shopItem_i = 2;
+		    shopItem_i = 2;
 		}
 	}
 		
 	public void buyShopIncubator(){
 		if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
-		GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
-		GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
-		PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
-		} else {
-		shopBuyPopup_obj.SetActive(true);
+		    GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+		    GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
+		    PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
+            PlayerPrefs.SetInt("popupeff", 00);
+        } else {
+            PlayerPrefs.SetInt("popupeff", 99);
+		    shopBuyPopup_obj.SetActive(true);
 			//shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
-		shopItem_i = 3;
+		    shopItem_i = 3;
 		}
 	}
 
@@ -198,7 +204,8 @@ public class ShopEvt : MonoBehaviour {
 			break;
 		}
 		if (GM.GetComponent<GameBtnEvt> ().gameCoin_i >= price) {
-			switch (shopItem_i) {
+            PlayerPrefs.SetInt("buyorfail", 3);
+            switch (shopItem_i) {
 			case 1:
 				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 				PlayerPrefs.SetInt ("backset", shopIndex_i);
@@ -226,7 +233,8 @@ public class ShopEvt : MonoBehaviour {
 			PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 		} else {
 			coinPopup_obj.SetActive (true);
-		}
+            PlayerPrefs.SetInt("buyorfail", 4);
+        }
 		PlayerPrefs.Save ();
 		shopBuyPopup_obj.SetActive (false);
 	}

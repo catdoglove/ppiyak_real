@@ -7,8 +7,8 @@ public class SoundEvt : MonoBehaviour {
 
 	public AudioSource se_touch;
 	public AudioClip sp_touch;
-	public AudioSource se_touchegg,se_buy,se_born;
-	public AudioClip sp_touchegg,sp_buy,sp_born;
+	public AudioSource se_touchegg,se_buy,se_born, se_fail;
+	public AudioClip sp_touchegg,sp_buy,sp_born, sp_fail;
 	public GameObject BGMmute,SEmute;
 	public Sprite [] spr_mute;
 
@@ -29,14 +29,18 @@ public class SoundEvt : MonoBehaviour {
 
 		se_born = gameObject.GetComponent<AudioSource> ();
 		se_born.clip=sp_born;
-        
+
+        se_fail = gameObject.GetComponent<AudioSource>();
+        se_fail.clip = sp_fail;
+
 
         if (PlayerPrefs.GetInt ("soundmute", 0)==1) {
 			se_touch.mute = true;
 			se_buy.mute = true;
 			se_touchegg.mute = true;
 			se_born.mute = true;
-			PlayerPrefs.SetInt("soundmute",1);
+            se_fail.mute = true;
+            PlayerPrefs.SetInt("soundmute",1);
 		}
 		
 	}
@@ -58,10 +62,20 @@ public class SoundEvt : MonoBehaviour {
 	}
 
 	public void buySound(){
-		se_buy = gameObject.GetComponent<AudioSource> ();
-		se_buy.clip=sp_buy;
-		se_buy.loop = false;
-		se_buy.Play ();
+        if (PlayerPrefs.GetInt("buyorfail", 0)==3)
+        {
+            se_buy = gameObject.GetComponent<AudioSource>();
+            se_buy.clip = sp_buy;
+            se_buy.loop = false;
+            se_buy.Play();
+        }
+        else if(PlayerPrefs.GetInt("buyorfail", 0)==4)
+        {
+            se_fail = gameObject.GetComponent<AudioSource>();
+            se_fail.clip = sp_fail;
+            se_fail.loop = false;
+            se_fail.Play();
+        }
 	}
 
 	public void bornSound(){
@@ -70,7 +84,6 @@ public class SoundEvt : MonoBehaviour {
 		se_born.loop = false;
 		se_born.Play ();
 	}
-    
 
 
     public void soundMute(){
@@ -79,14 +92,17 @@ public class SoundEvt : MonoBehaviour {
 			se_buy.mute = true;
 			se_touchegg.mute = true;
 			se_born.mute = true;
-			SEmute.GetComponent<Image>().sprite=spr_mute[1];
+            se_fail.mute = true;
+
+            SEmute.GetComponent<Image>().sprite=spr_mute[1];
 			PlayerPrefs.SetInt("soundmute",1);
 		} else {
 			se_touch.mute = false;
 			se_buy.mute = false;
 			se_touchegg.mute = false;
 			se_born.mute = false;
-			SEmute.GetComponent<Image>().sprite=spr_mute[0];
+            se_fail.mute = false;
+            SEmute.GetComponent<Image>().sprite=spr_mute[0];
 			PlayerPrefs.SetInt("soundmute",0);
 		}
 	}
