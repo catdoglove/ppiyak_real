@@ -73,7 +73,9 @@ public class GameEvt : MonoBehaviour {
 			touchNum_i++;
 			if (fever > 0) {
 				touchNum_i++;
-			}
+                fever = fever - 2;
+
+            }
 
 			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
 

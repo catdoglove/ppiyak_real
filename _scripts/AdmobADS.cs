@@ -13,11 +13,14 @@ public class AdmobADS : MonoBehaviour {
     private RewardBasedVideoAd rewardBasedVideo;
     string adUnitIdvideo;
 
-    //public GameObject GM;
+    //public GameObject GM; (주석풀기)
+    int rewardCoin;
     
 
     // Use this for initialization
     void Start () {
+
+     //   rewardCoin = GM.GetComponent<GameBtnEvt>().gameCoin_i;
 
 #if UNITY_ANDROID
         string appId = "ca-app-pub-3940256099942544~3347511713";
@@ -78,7 +81,12 @@ public class AdmobADS : MonoBehaviour {
 
     //시청보상
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
-    {
+    {        
+        //코인 10분마다 100원 지급
+        string str = PlayerPrefs.GetString("code", "");
+        rewardCoin = PlayerPrefs.GetInt(str, 0);
+        rewardCoin = rewardCoin + 100;
+        PlayerPrefs.SetInt(str, rewardCoin);
     }
 
     //동영상닫음
@@ -91,7 +99,6 @@ public class AdmobADS : MonoBehaviour {
     {
         if (rewardBasedVideo.IsLoaded())
         {
-            Debug.Log("aaa");
             rewardBasedVideo.Show();
         }
         else

@@ -5,11 +5,12 @@ using UnityEngine.Advertisements;
 
 public class UnityADS : MonoBehaviour {
 
-     private string gameId = "1486550";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
+    private string gameId = "1486550";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
+    public GameObject GM;
 
 
     // Use this for initialization
-      void Start () {
+    void Start () {
           if (Advertisement.isSupported)
           {
               Advertisement.Initialize(gameId, true);
@@ -32,9 +33,7 @@ public class UnityADS : MonoBehaviour {
     {
         if (result == ShowResult.Finished)
         {
-            //Add code to reward your player here!
-            //Give coins, etc
-            //Debug.Log("보상");
+            GM.GetComponent<GameEvt>().fever = 40;
         }
     }
 
