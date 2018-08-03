@@ -13,6 +13,8 @@ public class ShopEvt : MonoBehaviour {
 	public GameObject shopBuyPopup_obj;
 	public int[] backPrice_i, bottomPrice_i, incubatorPrice_i;
 	public GameObject[] backLock_obj,bottomLock_obj,incubatorLock_obj;
+	public GameObject[] useBack_obj, useBottom_obj, useIncubator_obj;
+	public GameObject[] haveBack_obj, haveBottom_obj, haveIncubator_obj;
 
 	//효과 설명
 
@@ -24,8 +26,11 @@ public class ShopEvt : MonoBehaviour {
 	public Text shopCoin_txt;
 	public GameObject coinPopup_obj;
 
+
+
 	// Use this for initialization
 	void Start () {
+		PlayerPrefs.SetInt ("back-1",1);
 	}
 	//상점열기
 	public void shopOpen(){
@@ -33,10 +38,22 @@ public class ShopEvt : MonoBehaviour {
 		if(backLock_obj[0]==null){
 			backLock_obj = GameObject.FindGameObjectsWithTag ("backlock");
 		}
+
+
+		for (int i = 0; i < 20; i++) {
+			useBack_obj [i].SetActive (false);
+		}
+		useBack_obj [PlayerPrefs.GetInt ("backset", 0)+1].SetActive (true);
+
+
 		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("back" + i, 0) == 1) {
 				backLock_obj [i].SetActive (false);
+				haveBack_obj [i].SetActive (true);
 			}
+		}
+		if (PlayerPrefs.GetInt ("back18", 0) == 1) {
+			haveBack_obj [18].SetActive (true);
 		}
 		string str = PlayerPrefs.GetString ("code", "");
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
@@ -89,6 +106,10 @@ public class ShopEvt : MonoBehaviour {
     }
 	//샵구매인덱스
 	#region 
+
+	public void buyShopBack19(){
+		shopIndex_i = -1;
+	}
 
 	public void buyShopBack0(){
 		shopIndex_i = 0;
@@ -154,6 +175,10 @@ public class ShopEvt : MonoBehaviour {
 		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("backset", shopIndex_i);
+			for (int i = 0; i < 20; i++) {
+				useBack_obj [i].SetActive (false);
+			}
+			useBack_obj [PlayerPrefs.GetInt ("backset", 0)+1].SetActive (true);
             PlayerPrefs.SetInt("popupeff", 00);
 		} else {
             PlayerPrefs.SetInt("popupeff", 99);
@@ -209,10 +234,15 @@ public class ShopEvt : MonoBehaviour {
 			case 1:
 				GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("backset", shopIndex_i);
+				for (int i = 0; i < 20; i++) {
+					useBack_obj [i].SetActive (false);
+				}
+				useBack_obj [shopIndex_i+1].SetActive (true);
 				PlayerPrefs.SetInt ("back" + shopIndex_i, 1);
 				if (shopIndex_i == 18) {
 				} else {
 					backLock_obj [shopIndex_i].SetActive (false);
+					haveBack_obj [shopIndex_i].SetActive (true);
 				}
 				break;
 			case 2:
@@ -254,5 +284,7 @@ public class ShopEvt : MonoBehaviour {
 	public void coinClose(){
 		coinPopup_obj.SetActive (false);
 	}
+
+
 
 }
