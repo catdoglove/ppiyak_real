@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OptionEvt : MonoBehaviour {
 
-	public GameObject option_obj;
+	public GameObject option_obj, help_obj;
 	public GameObject GM;
 
     public AudioSource bgm_title;
@@ -41,4 +41,14 @@ public class OptionEvt : MonoBehaviour {
 	public void optionClose(){
 		GM.GetComponent<OptionEvt> ().option_obj.SetActive (false);
 	}
+
+    public void helpOpen()
+    {
+        help_obj.SetActive(true);
+    }
+    
+    public void helpClose()
+    {
+        help_obj.SetActive(false);
+    }
 }

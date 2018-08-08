@@ -32,9 +32,8 @@ public class AdmobADS : MonoBehaviour {
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(appId);
 
-        this.RequestBanner();
-
-        //  RequestInterstitial();
+        //this.RequestBanner();
+        
 
         rewardBasedVideo = RewardBasedVideoAd.Instance;
         
@@ -118,5 +117,10 @@ public class AdmobADS : MonoBehaviour {
         adsPopup.SetActive(false);
     }
 
+
+    public void callBanner()
+    {
+        this.RequestBanner();
+    }
 
 }
