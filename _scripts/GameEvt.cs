@@ -194,8 +194,9 @@ public class GameEvt : MonoBehaviour {
 			rand = PlayerPrefs.GetInt ("basic_unlock", 5);
 			eggIndex_i = Random.Range (1, rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0);
-			if (eff != rand) {
+			eff = PlayerPrefs.GetInt ("effect_set", 0)+1;
+
+			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (1, rand);
 			}
 			rands = Random.Range (0, 2);
@@ -206,7 +207,7 @@ public class GameEvt : MonoBehaviour {
 			eggIndex_i = Random.Range (0,rand);
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-5;
-			if (eff != rand) {
+			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (0, rand);
 			}
 			rands = Random.Range (2, 2);
@@ -217,7 +218,8 @@ public class GameEvt : MonoBehaviour {
 			eggIndex_i = Random.Range (0,rand);
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
-			if (eff != rand) {
+			Debug.Log (eff);
+			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (0, rand);
 			}
 			rands = Random.Range (4, 2);
