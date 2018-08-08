@@ -6,7 +6,7 @@ using UnityEngine.Advertisements;
 public class UnityADS : MonoBehaviour {
 
     private string gameId = "1486550";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
-    public GameObject GM;
+    public GameObject GM,adsPopup;
 
 
     // Use this for initialization
@@ -34,7 +34,20 @@ public class UnityADS : MonoBehaviour {
         if (result == ShowResult.Finished)
         {
             GM.GetComponent<GameEvt>().fever = 40;
+            adsPopup.SetActive(false);
         }
+    }
+
+
+
+    public void openPopup()
+    {
+        adsPopup.SetActive(true);
+    }
+
+    public void closePopup()
+    {
+        adsPopup.SetActive(false);
     }
 
 

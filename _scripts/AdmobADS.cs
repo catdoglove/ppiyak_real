@@ -13,14 +13,14 @@ public class AdmobADS : MonoBehaviour {
     private RewardBasedVideoAd rewardBasedVideo;
     string adUnitIdvideo;
 
-    //public GameObject GM; (주석풀기)
+    public GameObject GM,adsPopup;
     int rewardCoin;
     
 
     // Use this for initialization
     void Start () {
 
-     //   rewardCoin = GM.GetComponent<GameBtnEvt>().gameCoin_i;
+     rewardCoin = GM.GetComponent<GameBtnEvt>().gameCoin_i;
 
 #if UNITY_ANDROID
         string appId = "ca-app-pub-3940256099942544~3347511713";
@@ -93,6 +93,7 @@ public class AdmobADS : MonoBehaviour {
     private void HandleRewardBasedVideoClosed(object sender, System.EventArgs args)
     {
         RequestRewardedVideo();
+        adsPopup.SetActive(false);
     }
 
     public void showAdmobVideo()
@@ -105,6 +106,16 @@ public class AdmobADS : MonoBehaviour {
         {
             //시청안된다는 메세지라도 띄워야하나 허엄
         }
+    }
+
+    public void openPopup()
+    {
+        adsPopup.SetActive(true);
+    }
+
+    public void closePopup()
+    {
+        adsPopup.SetActive(false);
     }
 
 
