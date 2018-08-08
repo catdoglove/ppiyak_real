@@ -12,7 +12,7 @@ public class GameEvt : MonoBehaviour {
 	public Sprite[] egg_spr;
 	public GameObject eggPopup_obj;
 
-	int c_Num;
+	public int c_Num;
 	int addCoin;
 
 	public int fever;
@@ -44,17 +44,25 @@ public class GameEvt : MonoBehaviour {
 			if (touchNum_i == -1) {
 				
 				ppiyakChange ();
+				addCoin = 0;
 			} else {
 				ppiyakChangeEgg ();
 			}
 		}
 
 	}
-	
+
+
+	public void eggNum1(){
+		c_Num = 0;
+	}
+	public void eggNum3(){
+		c_Num = 2;
+	}
 
 
 	public void touchEgg (){
-
+		touchNum_i = PlayerPrefs.GetInt ("touch" + c_Num, 0);
 		//-1일때알이부화되어있다 이때터치하면새로운랜덤변수들을정해준다
 		if (touchNum_i == -1) {
 			touchNum_i++;
@@ -90,9 +98,26 @@ public class GameEvt : MonoBehaviour {
 				ppiyakChange ();
 				string str = PlayerPrefs.GetString ("code", "");
 				GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
-				if (PlayerPrefs.GetInt ("beffect_set", 0) == 1) {
-					addCoin = addCoin + 20;
+				//효과
+				if (PlayerPrefs.GetInt ("beffect_set", 0) >= 3) {
+					addCoin = addCoin + 1;
+					if (PlayerPrefs.GetInt ("beffect_set", 0) >= 6) {
+						addCoin = addCoin + 4;
+						if (PlayerPrefs.GetInt ("beffect_set", 0) >= 9) {
+							addCoin = addCoin + 5;
+							if (PlayerPrefs.GetInt ("beffect_set", 0) >= 13) {
+								addCoin = addCoin + 5;
+								if (PlayerPrefs.GetInt ("beffect_set", 0) >= 16) {
+									addCoin = addCoin + 5;
+								}
+							}
+						}
+					}
+					if (maxNum_i < 0) {
+						maxNum_i = 1;
+					}
 				}
+
 				GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + addCoin;
 				PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 				PlayerPrefs.Save ();
@@ -163,22 +188,38 @@ public class GameEvt : MonoBehaviour {
 
 		int rand = 1;
 		int rands = 0;
+		int eff;
 		switch (eggRare_i) {
 		case 0:
 			rand = PlayerPrefs.GetInt ("basic_unlock", 5);
 			eggIndex_i = Random.Range (1, rand);
+			//효과
+			eff = PlayerPrefs.GetInt ("effect_set", 0);
+			if (eff != rand) {
+				eggIndex_i = Random.Range (1, rand);
+			}
 			rands = Random.Range (0, 2);
 			maxNum_i = Random.Range (2, 10); //★100
 			break;
 		case 1:
 			rand = PlayerPrefs.GetInt ("good_unlock",8);
 			eggIndex_i = Random.Range (0,rand);
+			//효과
+			eff = PlayerPrefs.GetInt ("effect_set", 0)-5;
+			if (eff != rand) {
+				eggIndex_i = Random.Range (0, rand);
+			}
 			rands = Random.Range (2, 2);
 			maxNum_i = Random.Range (5, 10); //★200
 			break;
 		case 2:
 			rand = PlayerPrefs.GetInt ("awesome_unlock",7);
 			eggIndex_i = Random.Range (0,rand);
+			//효과
+			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
+			if (eff != rand) {
+				eggIndex_i = Random.Range (0, rand);
+			}
 			rands = Random.Range (4, 2);
 			maxNum_i = Random.Range (8, 10); //★500
 			break;
@@ -186,8 +227,21 @@ public class GameEvt : MonoBehaviour {
 			maxNum_i = Random.Range (11, 21);
 			break;
 		}
-		if (PlayerPrefs.GetInt ("ieffect_set", 0) == 2) {
-			maxNum_i = maxNum_i - 20;
+		//효과
+		if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 3) {
+			maxNum_i = maxNum_i - 1;
+			if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 6) {
+				maxNum_i = maxNum_i - 4;
+				if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 9) {
+					maxNum_i = maxNum_i - 5;
+					if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 13) {
+						maxNum_i = maxNum_i - 5;
+						if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 16) {
+							maxNum_i = maxNum_i - 5;
+						}
+					}
+				}
+			}
 			if (maxNum_i < 0) {
 				maxNum_i = 1;
 			}
@@ -197,7 +251,7 @@ public class GameEvt : MonoBehaviour {
 		PlayerPrefs.SetInt ("rare" + c_Num, eggRare_i);
 		PlayerPrefs.SetInt ("max"+c_Num,maxNum_i);
 		PlayerPrefs.SetInt ("eggrare"+c_Num,rands);
-
+		ppiyakChangeEgg ();
 		eggPopup_obj.SetActive (false);
 	}
 }

@@ -75,13 +75,20 @@ public class ShopEvt : MonoBehaviour {
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (true);
 		incubator_obj.SetActive (false);
+
+
+
 		if(bottomLock_obj[0]==null){
 			bottomLock_obj = GameObject.FindGameObjectsWithTag ("bottomlock");
 		}
 		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("bottom" + i, 0) == 1) {
 				bottomLock_obj [i].SetActive (false);
+				haveBottom_obj [i].SetActive (true);
 			}
+		}
+		if (PlayerPrefs.GetInt ("bottom18", 0) == 1) {
+			haveBottom_obj [18].SetActive (true);
 		}
         shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[1];
@@ -98,7 +105,11 @@ public class ShopEvt : MonoBehaviour {
 		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("incubator" + i, 0) == 1) {
 				incubatorLock_obj [i].SetActive (false);
+				haveIncubator_obj [i].SetActive (true);
 			}
+		}
+		if (PlayerPrefs.GetInt ("incubator18", 0) == 1) {
+			haveIncubator_obj [18].SetActive (true);
 		}
         shop_btn_bg.GetComponent<Image>().sprite = btnSpr[3];
         shop_btn_under.GetComponent<Image>().sprite = btnSpr[4];
@@ -175,6 +186,8 @@ public class ShopEvt : MonoBehaviour {
 		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("backset", shopIndex_i);
+			//효과
+			PlayerPrefs.SetInt ("effect_set", shopIndex_i+1);
 			for (int i = 0; i < 20; i++) {
 				useBack_obj [i].SetActive (false);
 			}
@@ -183,7 +196,7 @@ public class ShopEvt : MonoBehaviour {
 		} else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			//shopEffect_txt.text = BackEffect_str [shopIndex_i];
+			shopEffect_txt.text = BackEffect_str [shopIndex_i];
 		    shopItem_i = 1;
 		}
 	}
@@ -192,11 +205,17 @@ public class ShopEvt : MonoBehaviour {
 		if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
 		    GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("bottomset", shopIndex_i);
+			//효과
+			PlayerPrefs.SetInt ("beffect_set", shopIndex_i+1);
+			for (int i = 0; i < 20; i++) {
+				useBottom_obj [i].SetActive (false);
+			}
+			useBottom_obj [PlayerPrefs.GetInt ("bottomset", 0)+1].SetActive (true);
             PlayerPrefs.SetInt("popupeff", 00);
         } else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			//shopEffect_txt.text = BottomEffect_str [shopIndex_i];
+			shopEffect_txt.text = BottomEffect_str [shopIndex_i];
 		    shopItem_i = 2;
 		}
 	}
@@ -206,11 +225,17 @@ public class ShopEvt : MonoBehaviour {
 		    GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		    GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
+			//효과
+			PlayerPrefs.SetInt ("ieffect_set", shopIndex_i+1);
+			for (int i = 0; i < 20; i++) {
+				useIncubator_obj [i].SetActive (false);
+			}
+			useIncubator_obj [PlayerPrefs.GetInt ("incubatorset", 0)+1].SetActive (true);
             PlayerPrefs.SetInt("popupeff", 00);
         } else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			//shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
+			shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
 		    shopItem_i = 3;
 		}
 	}
@@ -240,6 +265,7 @@ public class ShopEvt : MonoBehaviour {
 				useBack_obj [shopIndex_i+1].SetActive (true);
 				PlayerPrefs.SetInt ("back" + shopIndex_i, 1);
 				if (shopIndex_i == 18) {
+					haveBack_obj [shopIndex_i].SetActive (true);
 				} else {
 					backLock_obj [shopIndex_i].SetActive (false);
 					haveBack_obj [shopIndex_i].SetActive (true);
@@ -248,20 +274,32 @@ public class ShopEvt : MonoBehaviour {
 			case 2:
 				GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("bottomset", shopIndex_i);
+				for (int i = 0; i < 20; i++) {
+					useBottom_obj [i].SetActive (false);
+				}
+				useBottom_obj [shopIndex_i+1].SetActive (true);
 				PlayerPrefs.SetInt ("bottom" + shopIndex_i, 1);
 				if (shopIndex_i == 18) {
+					haveBottom_obj [shopIndex_i].SetActive (true);
 				} else {
 					bottomLock_obj [shopIndex_i].SetActive (false);
+					haveBottom_obj [shopIndex_i].SetActive (true);
 				}
 				break;
 			case 3:
 				GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i + 1];
 				GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i + 1];
 				PlayerPrefs.SetInt ("incubatorset", shopIndex_i);
+				for (int i = 0; i < 20; i++) {
+					useIncubator_obj [i].SetActive (false);
+				}
+				useIncubator_obj [shopIndex_i+1].SetActive (true);
 				PlayerPrefs.SetInt ("incubator" + shopIndex_i, 1);
 				if (shopIndex_i == 18) {
+					haveIncubator_obj [shopIndex_i].SetActive (true);
 				} else {
 					incubatorLock_obj [shopIndex_i].SetActive (false);
+					haveIncubator_obj [shopIndex_i].SetActive (true);
 				}
 				break;
 			}
