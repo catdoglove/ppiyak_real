@@ -11,7 +11,7 @@ public class GameBtnEvt : MonoBehaviour {
 	float buttonPos_f;
 	int buttonList_i=0;
 
-	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj, titleImage_obj;
+	public GameObject gameBack_obj, gameBottom_obj, gameIncubator1_obj,gameIncubator2_obj, titleImage_obj, exit_obj;
 	public Sprite[] back_spr, bottom_spr, incubator_spr;
 
 	//돈
@@ -130,13 +130,23 @@ public class GameBtnEvt : MonoBehaviour {
         //나가기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            exit_obj.SetActive(true);
         }
     }
-  
+
+    public void goOutYes()
+    {
+        Application.Quit();
+    }
+
+    public void goOutNo()
+    {
+        exit_obj.SetActive(false);
+    }
 
 
-        public void openButton(){
+
+    public void openButton(){
 		if (buttonList_i == 0) {
 			StopCoroutine ("btnMoveBack");
 			StopCoroutine ("imgFadeOut");
