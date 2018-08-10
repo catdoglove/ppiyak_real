@@ -17,6 +17,16 @@ public class GameEvt : MonoBehaviour {
 
 	public int fever;
 
+	//광고시간
+	System.DateTime nowAdTime;
+	System.DateTime lastDateAdTime;
+	System.TimeSpan compareAdTime;
+	string lastAdTime;
+	public Text AdTime_txt;
+	public GameObject AdTime_obj;
+	int sG,mG;
+	public GameObject adTimeBackImg_obj;
+
 	void Awake(){
 		//스프라이트동적할당
 		ppiyakBasic_spr = Resources.LoadAll<Sprite> ("ppiyak/ppiyak_01(170x130)");
@@ -256,4 +266,35 @@ public class GameEvt : MonoBehaviour {
 		ppiyakChangeEgg ();
 		eggPopup_obj.SetActive (false);
 	}
+
+
+	IEnumerator adTimeFlow(){
+		while (mG>-1) {
+			nowAdTime=new System.DateTime(1970,1,1,0,0,0,System.DateTimeKind.Utc);
+			lastAdTime = PlayerPrefs.GetString ("saveAdtime",nowAdTime.ToString());
+			lastDateAdTime = System.DateTime.Parse(lastAdTime);
+			compareAdTime =  System.DateTime.Now - lastDateAdTime;
+			sG = (int)compareAdTime.TotalSeconds;
+			mG = (int)compareAdTime.TotalMinutes;
+			sG = sG-(sG / 60)*60;
+			mG = 4 - mG;
+			//광고시간 오버플로우 막기위해 5넘으면 4로 변경
+			if (mG>=5) { mG = 4;}
+			sG = 59- sG;
+			if (mG < 0) {
+				adTimeBackImg_obj.SetActive (false);
+				sG = 0;
+				mG = 0;
+				AdTime_txt.text = "00:00";
+				AdTime_obj.SetActive (false);
+			} else {
+				adTimeBackImg_obj.SetActive (true);
+				string stru= string.Format(@"{0:00}"+":",mG)+string.Format(@"{0:00}",sG);
+				AdTime_txt.text = stru;
+				AdTime_obj.SetActive (true);
+			}
+			yield return new WaitForSeconds(1f);
+		}
+	}
+
 }
