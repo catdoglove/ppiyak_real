@@ -153,8 +153,8 @@ public class GameEvt : MonoBehaviour {
 			break;
 		case 2:
 			addCoin = 1000;
-			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [eggIndex_i];
-			PlayerPrefs.SetInt ("awesome_book"+eggIndex_i,1);
+			GM.GetComponent<GameEvt> ().ppiyak_obj [c_Num].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakAwesome_spr [eggIndex_i];
+			PlayerPrefs.SetInt ("awesome_book" + eggIndex_i, 1);
 			break;
 		case 3:
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [1];
@@ -264,7 +264,7 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
 
-			if(eff<0||eff>6){
+			if(eff>0){
 				eggIndex_i = eff;
 			}
 
