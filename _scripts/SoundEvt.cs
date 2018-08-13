@@ -7,8 +7,8 @@ public class SoundEvt : MonoBehaviour {
 
 	public AudioSource se_touch;
 	public AudioClip sp_touch;
-	public AudioSource se_touchegg,se_buy,se_born, se_fail;
-	public AudioClip sp_touchegg,sp_buy,sp_born, sp_fail;
+	public AudioSource se_touchegg,se_buy,se_born, se_fail, se_fever;
+	public AudioClip sp_touchegg,sp_buy,sp_born, sp_fail, sp_fever;
 	public GameObject BGMmute,SEmute;
 	public Sprite [] spr_mute;
 
@@ -33,6 +33,9 @@ public class SoundEvt : MonoBehaviour {
         se_fail = gameObject.GetComponent<AudioSource>();
         se_fail.clip = sp_fail;
 
+        se_fever = gameObject.GetComponent<AudioSource>();
+        se_fever.clip = sp_fever;
+
 
         if (PlayerPrefs.GetInt ("soundmute", 0)==1) {
 			se_touch.mute = true;
@@ -40,6 +43,7 @@ public class SoundEvt : MonoBehaviour {
 			se_touchegg.mute = true;
 			se_born.mute = true;
             se_fail.mute = true;
+            se_fever.mute = true;
             PlayerPrefs.SetInt("soundmute",1);
 		}
 		
@@ -56,7 +60,7 @@ public class SoundEvt : MonoBehaviour {
 
     public void touchEggSound(){
 
-        if(PlayerPrefs.GetInt("bornppiyak", 0) == 99)
+        if(PlayerPrefs.GetInt("bornppiyak", 0) == 99) // 태어남
         {
             se_born = gameObject.GetComponent<AudioSource>();
             se_born.clip = sp_born;
@@ -94,12 +98,15 @@ public class SoundEvt : MonoBehaviour {
         }
 	}
 
-	public void bornSound(){
-		se_born = gameObject.GetComponent<AudioSource> ();
-		se_born.clip=sp_born;
-		se_born.loop = false;
-		se_born.Play ();
-	}
+
+    public void feverSound()
+    {
+        se_fever = gameObject.GetComponent<AudioSource>();
+        se_fever.clip = sp_fever;
+        se_fever.loop = false;
+        se_fever.Play();
+    }
+
 
 
     public void soundMute(){
@@ -109,6 +116,7 @@ public class SoundEvt : MonoBehaviour {
 			se_touchegg.mute = true;
 			se_born.mute = true;
             se_fail.mute = true;
+            se_fever.mute = true;
 
             SEmute.GetComponent<Image>().sprite=spr_mute[1];
 			PlayerPrefs.SetInt("soundmute",1);
@@ -118,6 +126,7 @@ public class SoundEvt : MonoBehaviour {
 			se_touchegg.mute = false;
 			se_born.mute = false;
             se_fail.mute = false;
+            se_fever.mute = false;
             SEmute.GetComponent<Image>().sprite=spr_mute[0];
 			PlayerPrefs.SetInt("soundmute",0);
 		}
