@@ -100,8 +100,10 @@ public class GameEvt : MonoBehaviour {
 
 			//터치수가채워지면부화
 			if (touchNum_i >= maxNum_i) {
-				//부화됨터치횟수초기화하고다음알의희귀도를지정
-				touchNum_i = -1;
+                //부화됨터치횟수초기화하고다음알의희귀도를지정
+                PlayerPrefs.SetInt("bornppiyak", 99);
+
+                touchNum_i = -1;
 				PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
 				//병아리이미지변경
 				ppiyakChange ();

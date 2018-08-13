@@ -55,10 +55,26 @@ public class SoundEvt : MonoBehaviour {
     }
 
     public void touchEggSound(){
-		se_touchegg = gameObject.GetComponent<AudioSource> ();
-		se_touchegg.clip=sp_touchegg;
-		se_touchegg.loop = false;
-		se_touchegg.Play ();
+
+        if(PlayerPrefs.GetInt("bornppiyak", 0) == 99)
+        {
+            se_born = gameObject.GetComponent<AudioSource>();
+            se_born.clip = sp_born;
+            se_born.loop = false;
+            se_born.Play();
+
+            PlayerPrefs.SetInt("bornppiyak", 11);
+
+        }
+        else
+        {
+            se_touchegg = gameObject.GetComponent<AudioSource>();
+            se_touchegg.clip = sp_touchegg;
+            se_touchegg.loop = false;
+            se_touchegg.Play();
+
+        }
+
 	}
 
 	public void buySound(){
