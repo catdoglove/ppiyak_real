@@ -205,8 +205,20 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0) + 1;
 
-			if(eff<0||eff>5){
-				eggIndex_i = eff;
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
 			}
 
 			rands = Random.Range (0, 2);
@@ -218,8 +230,29 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-5;
 
-			if(eff<0||eff>7){
-				eggIndex_i = eff;
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
+			}
+			if (eff != eggIndex_i) {
+				eggIndex_i = Random.Range (0, rand);
 			}
 
 			rands = Random.Range (2, 2);
