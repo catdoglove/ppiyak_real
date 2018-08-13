@@ -149,14 +149,14 @@ public class GameEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("basic_book"+(eggIndex_i-1),1);
 			break;
 		case 1:
-			addCoin = 500;
+			addCoin = 200;
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakGood_spr [eggIndex_i];
 			PlayerPrefs.SetInt ("good_book"+eggIndex_i,1);
 			break;
 		case 2:
-			addCoin = 1000;
-			GM.GetComponent<GameEvt> ().ppiyak_obj [c_Num].GetComponent<Image> ().sprite = GM.GetComponent<GameEvt> ().ppiyakAwesome_spr [eggIndex_i];
-			PlayerPrefs.SetInt ("awesome_book" + eggIndex_i, 1);
+			addCoin = 500;
+			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [eggIndex_i];
+			PlayerPrefs.SetInt ("awesome_book"+eggIndex_i,1);
 			break;
 		case 3:
 			GM.GetComponent<GameEvt>().ppiyak_obj[c_Num].GetComponent<Image>().sprite=GM.GetComponent<GameEvt>().ppiyakAwesome_spr [1];
@@ -224,7 +224,7 @@ public class GameEvt : MonoBehaviour {
 			}
 
 			rands = Random.Range (0, 2);
-			maxNum_i = Random.Range (2, 10); //★100
+			maxNum_i = 10; //★100
 			break;
 		case 1:
 			rand = PlayerPrefs.GetInt ("good_unlock",8);
@@ -258,7 +258,7 @@ public class GameEvt : MonoBehaviour {
 			}
 
 			rands = Random.Range (2, 2);
-			maxNum_i = Random.Range (5, 10); //★200
+			maxNum_i = 10; //★200
 			break;
 		case 2:
 			rand = PlayerPrefs.GetInt ("awesome_unlock",7);
@@ -266,12 +266,12 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
 
-			if(eff>0){
+			if(eff<0||eff>6){
 				eggIndex_i = eff;
 			}
 
 			rands = Random.Range (4, 2);
-			maxNum_i = Random.Range (8, 10); //★500
+			maxNum_i = 10; //★500
 			break;
 		case 3:
 			maxNum_i = Random.Range (11, 21);
