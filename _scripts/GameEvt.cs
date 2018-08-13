@@ -92,7 +92,6 @@ public class GameEvt : MonoBehaviour {
 			if (fever > 0) {
 				touchNum_i++;
                 fever = fever - 2;
-
             }
 
 			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
@@ -201,14 +200,15 @@ public class GameEvt : MonoBehaviour {
 		int eff;
 		switch (eggRare_i) {
 		case 0:
-			rand = PlayerPrefs.GetInt ("basic_unlock", 5);
+			rand = PlayerPrefs.GetInt ("basic_unlock", 6);
 			eggIndex_i = Random.Range (1, rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0)+1;
+			eff = PlayerPrefs.GetInt ("effect_set", 0) + 1;
 
-			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (1, rand);
+			if(eff<0||eff>5){
+				eggIndex_i = eff;
 			}
+
 			rands = Random.Range (0, 2);
 			maxNum_i = Random.Range (2, 10); //★100
 			break;
@@ -217,9 +217,11 @@ public class GameEvt : MonoBehaviour {
 			eggIndex_i = Random.Range (0,rand);
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-5;
-			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+
+			if(eff<0||eff>7){
+				eggIndex_i = eff;
 			}
+
 			rands = Random.Range (2, 2);
 			maxNum_i = Random.Range (5, 10); //★200
 			break;
@@ -228,10 +230,11 @@ public class GameEvt : MonoBehaviour {
 			eggIndex_i = Random.Range (0,rand);
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
-			Debug.Log (eff);
-			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+
+			if(eff<0||eff>6){
+				eggIndex_i = eff;
 			}
+
 			rands = Random.Range (4, 2);
 			maxNum_i = Random.Range (8, 10); //★500
 			break;
