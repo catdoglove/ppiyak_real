@@ -2543,7 +2543,7 @@ GameObject:
   - component: {fileID: 102785887}
   - component: {fileID: 102785886}
   m_Layer: 5
-  m_Name: "\uB465\uC9C0\uC2A4\uD06C\uB864"
+  m_Name: "\uBC14\uB2E5\uC2A4\uD06C\uB864"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2825,7 +2825,7 @@ RectTransform:
   m_GameObject: {fileID: 108833267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007040472, y: 0.007040472, z: 0.007040472}
+  m_LocalScale: {x: 0.0070163487, y: 0.0070163487, z: 0.0070163487}
   m_Children:
   - {fileID: 1350763818}
   - {fileID: 151364085}
@@ -23961,7 +23961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1096016222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39221,6 +39221,9 @@ MonoBehaviour:
   shopEffect_txt: {fileID: 1211647685}
   shopCoin_txt: {fileID: 1849205837}
   coinPopup_obj: {fileID: 1568682727}
+  AdTime_txt: {fileID: 1541636317}
+  AdTime_obj: {fileID: 1096016221}
+  adTimeBackImg_obj: {fileID: 1096016221}
 --- !u!114 &1824201780
 MonoBehaviour:
   m_ObjectHideFlags: 0
