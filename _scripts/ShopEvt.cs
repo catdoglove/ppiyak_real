@@ -40,7 +40,7 @@ public class ShopEvt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		coinAdPop ();
 		PlayerPrefs.SetInt ("back-1",1);
 		PlayerPrefs.SetInt ("incubator-1",1);
 		PlayerPrefs.SetInt ("bottom-1",1);
@@ -344,18 +344,10 @@ public class ShopEvt : MonoBehaviour {
 
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
-			nowAdTime=new System.DateTime(1970,1,1,0,0,0,System.DateTimeKind.Utc);
-			lastAdTime = PlayerPrefs.GetString ("saveAdtime",nowAdTime.ToString());
-			lastDateAdTime = System.DateTime.Parse(lastAdTime);
-			compareAdTime =  System.DateTime.Now - lastDateAdTime;
-			sG = (int)compareAdTime.TotalSeconds;
-			mG = (int)compareAdTime.TotalMinutes;
+			sG = PlayerPrefs.GetInt("sec",60);
+			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
-			mG = 4 - mG;
-			//광고시간 오버플로우 막기위해 5넘으면 4로 변경
-			if (mG>=5) { mG = 4;}
-			sG = 59- sG;
-			if (mG < 0) {
+			if (sG < 0) {
 				adTimeBackImg_obj.SetActive (false);
 				sG = 0;
 				mG = 0;
@@ -367,6 +359,9 @@ public class ShopEvt : MonoBehaviour {
 				AdTime_txt.text = stru;
 				AdTime_obj.SetActive (true);
 			}
+			sG = PlayerPrefs.GetInt("sec",60);
+			sG = sG - 1;
+			PlayerPrefs.SetInt("sec",sG);
 			yield return new WaitForSeconds(1f);
 		}
 	}
