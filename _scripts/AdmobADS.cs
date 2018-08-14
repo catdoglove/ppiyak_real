@@ -86,7 +86,8 @@ public class AdmobADS : MonoBehaviour {
         rewardCoin = PlayerPrefs.GetInt(str, 0);
         rewardCoin = rewardCoin + 100;
         PlayerPrefs.SetInt(str, rewardCoin);
-
+		//시간타이머
+		PlayerPrefs.SetInt("sec",60);
     }
 
     //동영상닫음
@@ -98,7 +99,7 @@ public class AdmobADS : MonoBehaviour {
 
     public void showAdmobVideo()
     {
-		PlayerPrefs.SetString ("saveAdtime",System.DateTime.Now.ToString());
+		PlayerPrefs.SetInt("sec",60);
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();

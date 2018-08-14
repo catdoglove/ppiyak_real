@@ -15,7 +15,10 @@ public class GameEvt : MonoBehaviour {
 	public int c_Num;
 	int addCoin;
 
+	//피버타임
 	public int fever;
+	public GameObject fever_obj;
+	public GameObject goPy;
 
 	//광고시간
 	System.DateTime nowAdTime;
@@ -91,8 +94,10 @@ public class GameEvt : MonoBehaviour {
 			touchNum_i++;
 			if (fever > 0) {
 				touchNum_i++;
-                fever = fever - 2;
-            }
+				fever = fever - 2;
+			} else {
+				fever_obj.SetActive (false);
+			}
 
 			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
 
@@ -208,19 +213,19 @@ public class GameEvt : MonoBehaviour {
 			eff = PlayerPrefs.GetInt ("effect_set", 0) + 1;
 
 			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+				eggIndex_i = Random.Range (1, rand);
 			}
 			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+				eggIndex_i = Random.Range (1, rand);
 			}
 			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+				eggIndex_i = Random.Range (1, rand);
 			}
 			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+				eggIndex_i = Random.Range (1, rand);
 			}
 			if (eff != eggIndex_i) {
-				eggIndex_i = Random.Range (0, rand);
+				eggIndex_i = Random.Range (1, rand);
 			}
 
 			rands = Random.Range (0, 2);
@@ -308,29 +313,20 @@ public class GameEvt : MonoBehaviour {
 
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
-			nowAdTime=new System.DateTime(1970,1,1,0,0,0,System.DateTimeKind.Utc);
-			lastAdTime = PlayerPrefs.GetString ("saveAdtime",nowAdTime.ToString());
-			lastDateAdTime = System.DateTime.Parse(lastAdTime);
-			compareAdTime =  System.DateTime.Now - lastDateAdTime;
-			sG = (int)compareAdTime.TotalSeconds;
-			mG = (int)compareAdTime.TotalMinutes;
+
+			sG = PlayerPrefs.GetInt("secf",60);
+			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
-			mG = 4 - mG;
-			//광고시간 오버플로우 막기위해 5넘으면 4로 변경
-			if (mG>=5) { mG = 4;}
-			sG = 59- sG;
-			if (mG < 0) {
-				adTimeBackImg_obj.SetActive (false);
+			if (sG < 0) {
 				sG = 0;
 				mG = 0;
 				AdTime_txt.text = "00:00";
-				AdTime_obj.SetActive (false);
+				goPy.SetActive (true);
 			} else {
-				adTimeBackImg_obj.SetActive (true);
-				string stru= string.Format(@"{0:00}"+":",mG)+string.Format(@"{0:00}",sG);
-				AdTime_txt.text = stru;
-				AdTime_obj.SetActive (true);
 			}
+			sG = PlayerPrefs.GetInt("secf",60);
+			sG = sG - 1;
+			PlayerPrefs.SetInt("secf",sG);
 			yield return new WaitForSeconds(1f);
 		}
 	}
