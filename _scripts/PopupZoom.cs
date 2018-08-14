@@ -6,15 +6,14 @@ using UnityEngine.UI;
 
 public class PopupZoom : MonoBehaviour
 {
-    public GameObject popupWindow;
-    //public GameObject GM;
+    public GameObject popupWindow,GM;
     Vector3 scalee;
     private Exception e;
+    Color color;
 
     // Use this for initialization
     void Start () {
-		
-	}
+    }
 
     public void ZoomIn()
     {
@@ -68,6 +67,38 @@ public class PopupZoom : MonoBehaviour
             scalee.y = scalee.y - 0.03f;
             transform.localScale = scalee;
         }
+    }
+
+
+    public void fadeouttt()
+    {
+        if (PlayerPrefs.GetInt("popuptouch", 0) == 9)
+        {
+            StartCoroutine("imgFadeOut");
+            GM.GetComponent<UnityADS>().soundck = 0;
+            PlayerPrefs.SetInt("popuptouch", 1);
+        }
+        
+    }
+
+
+    IEnumerator imgFadeOut()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            color = GM.GetComponent<GameEvt>().fever_obj.GetComponent<Image>().color;
+        }
+        for (float i = 1f; i > -1f; i -= 0.1f)
+        {
+            //Debug.Log (i);
+            color.a = Mathf.Lerp(0f, 1f, i);
+            for (int j = 0; j < 3; j++)
+            {
+                GM.GetComponent<GameEvt>().fever_obj.GetComponent<Image>().color = color;
+            }
+            yield return null;
+        }
+        GM.GetComponent<GameEvt>().fever_obj.SetActive (false);
     }
 
 

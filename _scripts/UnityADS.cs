@@ -7,6 +7,8 @@ public class UnityADS : MonoBehaviour {
 
     private string gameId = "1486550";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
 	public GameObject GM,adsPopup,goPy;
+    public GameObject GM_fever;
+    public int soundck;
 
 
     // Use this for initialization
@@ -37,6 +39,8 @@ public class UnityADS : MonoBehaviour {
 			GM.GetComponent<GameEvt>().fever_obj.SetActive (true);
 			goPy.SetActive (false);
             adsPopup.SetActive(false);
+            GM_fever.GetComponent<PopupZoom>().ZoomIn2();
+            soundck = 99;
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameEvt : MonoBehaviour {
 	//이전씬에서로드된데이터가져오기
-	public GameObject GM;
+	public GameObject GM, GM_fever;
 	public int eggRare_i, touchNum_i, maxNum_i,eggIndex_i;
 	public GameObject[] ppiyak_obj;
 	public Sprite[] ppiyakBasic_spr,ppiyakGood_spr,ppiyakAwesome_spr;
@@ -92,12 +92,16 @@ public class GameEvt : MonoBehaviour {
 
 
 			touchNum_i++;
-			if (fever > 0) {
+
+			if (fever > 0) { //피버타임
 				touchNum_i++;
 				fever = fever - 2;
-			} else {
-				fever_obj.SetActive (false);
-			}
+			} else if(fever > -3)
+            {
+                GM_fever.GetComponent<PopupZoom>().fadeouttt();
+                PlayerPrefs.SetInt("popuptouch", 9);
+                fever = -99;
+            }
 
 			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
 

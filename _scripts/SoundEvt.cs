@@ -50,6 +50,15 @@ public class SoundEvt : MonoBehaviour {
 	}
 
 
+    private void Update()
+    {
+        if(GM.GetComponent<UnityADS>().soundck == 99)
+        {
+            feverSound();
+            GM.GetComponent<UnityADS>().soundck = 0;
+        }
+    }
+
     public void touchSound()
     {
         se_touch = gameObject.GetComponent<AudioSource>();
