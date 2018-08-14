@@ -488,6 +488,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &10959764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,80 +948,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39827576}
---- !u!1 &51558478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 51558479}
-  - component: {fileID: 51558481}
-  - component: {fileID: 51558480}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &51558479
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 51558478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1209283317}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &51558480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 51558478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Button
---- !u!222 &51558481
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 51558478}
 --- !u!1 &52263052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1130,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!1 &52904779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2280,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &101376989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,7 +2850,6 @@ RectTransform:
   - {fileID: 846167622}
   - {fileID: 708822999}
   - {fileID: 1697608800}
-  - {fileID: 1209283317}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3011,7 +2939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 110632796}
-  GM_fever: {fileID: 110632796}
+  GM: {fileID: 1824201771}
 --- !u!1 &113551862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,6 +3400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 1824201771}
+  GM_fever: {fileID: 0}
   eggRare_i: 0
   touchNum_i: 0
   maxNum_i: 0
@@ -3850,6 +3779,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &132845830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4458,6 +4388,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &160941719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6404,6 +6335,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &268561436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7153,6 +7085,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &299698320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7824,7 +7757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 319718375}
-  GM_fever: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &324387018
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,6 +8271,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &332665318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8700,7 +8634,7 @@ MonoBehaviour:
   sp_buy: {fileID: 8300000, guid: 7b3a19c7be006234b9d4b72dc88046b4, type: 3}
   sp_born: {fileID: 8300000, guid: 33e1c2a767aa42a408f7b6a2d5bcd102, type: 3}
   sp_fail: {fileID: 8300000, guid: 686d29039948bfe45b17a6fc0a338017, type: 3}
-  sp_fever: {fileID: 0}
+  sp_fever: {fileID: 8300000, guid: a9f522059f39a364b95a147d8633a660, type: 3}
   BGMmute: {fileID: 532605320}
   SEmute: {fileID: 807265282}
   spr_mute:
@@ -9740,7 +9674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 398710922}
-  GM_fever: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &409263331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10402,6 +10336,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &430703354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16136,7 +16071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 705364749}
-  GM_fever: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &706141115
 GameObject:
   m_ObjectHideFlags: 0
@@ -16373,6 +16308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 1824201771}
+  GM_fever: {fileID: 0}
   eggRare_i: 0
   touchNum_i: 0
   maxNum_i: 0
@@ -18549,6 +18485,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &794959364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20213,6 +20150,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &881924135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24022,6 +23960,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1079180996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25126,6 +25065,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1158593066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26396,128 +26336,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202519520}
---- !u!1 &1209283316
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1209283317}
-  - component: {fileID: 1209283320}
-  - component: {fileID: 1209283319}
-  - component: {fileID: 1209283318}
-  m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1209283317
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209283316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -201.45999, y: 442.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 51558479}
-  m_Father: {fileID: 108833271}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -201.46, y: 442.75}
-  m_SizeDelta: {x: 303.8, y: 138.5}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1209283318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209283316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1209283319}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 110632800}
-        m_MethodName: ZoomIn2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1209283319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209283316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1209283320
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209283316}
 --- !u!1 &1211647683
 GameObject:
   m_ObjectHideFlags: 0
@@ -30443,6 +30261,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1396276301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35369,6 +35188,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1626969236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35887,6 +35707,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1664718270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36069,6 +35890,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1670942513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36618,7 +36440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 1697608799}
-  GM_fever: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!114 &1697608802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37821,7 +37643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupWindow: {fileID: 1752902529}
-  GM_fever: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1773407951
 GameObject:
   m_ObjectHideFlags: 0
@@ -38276,6 +38098,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1792914615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38684,6 +38507,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1812913894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39088,6 +38912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 1824201771}
+  GM_fever: {fileID: 110632796}
   eggRare_i: 0
   touchNum_i: 0
   maxNum_i: 0
@@ -39302,6 +39127,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1824201778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39636,6 +39462,8 @@ MonoBehaviour:
   GM: {fileID: 1824201771}
   adsPopup: {fileID: 846167621}
   goPy: {fileID: 725295474}
+  GM_fever: {fileID: 110632796}
+  soundck: 0
 --- !u!82 &1824201782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42891,6 +42719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 1824201771}
+  GM_fever: {fileID: 0}
   eggRare_i: 0
   touchNum_i: 0
   maxNum_i: 0
@@ -43665,6 +43494,7 @@ MonoBehaviour:
   bookGood_obj: []
   bookAwesome_obj: []
   spr: []
+  effectShow_txt: {fileID: 0}
 --- !u!114 &1995884974
 MonoBehaviour:
   m_ObjectHideFlags: 0
