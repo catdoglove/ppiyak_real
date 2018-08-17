@@ -99,6 +99,9 @@ public class PopupZoom : MonoBehaviour
             yield return null;
         }
         GM.GetComponent<GameEvt>().fever_obj.SetActive (false);
+        //다음 피버를 위해 투명도 복구
+        color.a = Mathf.Lerp(0f, 1f, 1f);
+        GM.GetComponent<GameEvt>().fever_obj.GetComponent<Image>().color = color;
     }
 
 

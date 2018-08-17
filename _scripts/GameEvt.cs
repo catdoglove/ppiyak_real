@@ -93,14 +93,19 @@ public class GameEvt : MonoBehaviour {
 
 			touchNum_i++;
 
-			if (fever > 0) { //피버타임
+			if (fever > 0)
+            { //피버타임
 				touchNum_i++;
 				fever = fever - 2;
-			} else if(fever > -3)
+			}
+
+            //뭘 변수를 만들어서 피버타임이 발동 될 때만 실행이 되도록
+            if (PlayerPrefs.GetInt("popupstart", 0) == 9)
             {
                 GM_fever.GetComponent<PopupZoom>().fadeouttt();
                 PlayerPrefs.SetInt("popuptouch", 9);
-                fever = -99;
+                PlayerPrefs.SetInt("popupstart", 1);
+
             }
 
 			PlayerPrefs.SetInt ("touch" + c_Num, touchNum_i);
