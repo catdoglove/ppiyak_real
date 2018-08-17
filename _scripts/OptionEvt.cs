@@ -10,12 +10,14 @@ public class OptionEvt : MonoBehaviour {
 
     public AudioSource bgm_title, bgm_first;
     public GameObject BGMmute, SEmute;
-    public Sprite[] spr_mute;
+    public Sprite[] spr_mute, spr_helps;
 
     //아이디
     public Text id_txt;
-    
-	void Start () {
+    int help_i;
+
+
+    void Start () {
 
         //알게된 정보 : gameobject = GM으로 나오고 go대신 직접 변수쓰면 아래와 같음
         bgm_first = bgm_first.GetComponent<AudioSource>();
@@ -69,6 +71,15 @@ public class OptionEvt : MonoBehaviour {
     
     public void helpClose()
     {
-        help_obj.SetActive(false);
+        if (help_i == 0)
+        {
+            help_obj.GetComponent<Image>().sprite = spr_helps[help_i+1];
+            help_i = 1;
+        }else if (help_i == 1)
+        {
+            help_obj.SetActive(false);
+            help_i = 0;
+            help_obj.GetComponent<Image>().sprite = spr_helps[help_i];
+        }
     }
 }
