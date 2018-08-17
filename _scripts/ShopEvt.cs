@@ -214,6 +214,7 @@ public class ShopEvt : MonoBehaviour {
 			shopEffect_txt.text = BackEffect_str [shopIndex_i];
 		    shopItem_i = 1;
 		}
+		PlayerPrefs.Save ();
 	}
 
 	public void buyShopBottom(){
@@ -233,6 +234,7 @@ public class ShopEvt : MonoBehaviour {
 			shopEffect_txt.text = BottomEffect_str [shopIndex_i];
 		    shopItem_i = 2;
 		}
+		PlayerPrefs.Save ();
 	}
 		
 	public void buyShopIncubator(){
@@ -253,6 +255,7 @@ public class ShopEvt : MonoBehaviour {
 			shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
 		    shopItem_i = 3;
 		}
+		PlayerPrefs.Save ();
 	}
 
 	public void buyYes(){
