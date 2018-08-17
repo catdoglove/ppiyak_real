@@ -86,8 +86,16 @@ public class AdmobADS : MonoBehaviour {
         rewardCoin = PlayerPrefs.GetInt(str, 0);
         rewardCoin = rewardCoin + 100;
         PlayerPrefs.SetInt(str, rewardCoin);
-		//시간타이머
-		PlayerPrefs.SetInt("sec",60);
+
+
+
+        str = PlayerPrefs.GetString("code", "");
+        GM.GetComponent<GameBtnEvt>().gameCoin_i = PlayerPrefs.GetInt(str, 0);
+        GM.GetComponent<ShopEvt>().shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt>().gameCoin_i;
+
+
+        //시간타이머
+        PlayerPrefs.SetInt("sec",60);
     }
 
     //동영상닫음
