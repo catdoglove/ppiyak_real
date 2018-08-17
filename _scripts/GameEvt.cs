@@ -18,7 +18,7 @@ public class GameEvt : MonoBehaviour {
 	//피버타임
 	public int fever;
 	public GameObject fever_obj;
-	public GameObject goPy;
+
 
 	//광고시간
 	System.DateTime nowAdTime;
@@ -27,7 +27,7 @@ public class GameEvt : MonoBehaviour {
 	string lastAdTime;
 	public Text AdTime_txt;
 	public GameObject AdTime_obj;
-	int sG,mG;
+
 	public GameObject adTimeBackImg_obj;
 
 	void Awake(){
@@ -37,7 +37,6 @@ public class GameEvt : MonoBehaviour {
 		ppiyakAwesome_spr = Resources.LoadAll<Sprite> ("ppiyak/ppiyak_03(170x130)");
 		egg_spr = Resources.LoadAll<Sprite> ("ppiyak/egg(110x120)");
 
-		StartCoroutine ("adTimeFlow");
 	}
 
 	// Use this for initialization
@@ -280,7 +279,7 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
 
-			if(eff<0||eff>6){
+			if(eff>0){
 				eggIndex_i = eff;
 			}
 
@@ -320,26 +319,6 @@ public class GameEvt : MonoBehaviour {
 	}
 
 
-	IEnumerator adTimeFlow(){
-		while (mG>-1) {
 
-			sG = PlayerPrefs.GetInt("secf",60);
-			mG = (int)(sG / 60);
-			sG = sG-(sG / 60)*60;
-			if (sG < 0) {
-				sG = 0;
-				mG = 0;
-				goPy.SetActive (true);
-			} else {
-			}
-			sG = PlayerPrefs.GetInt("secf",60);
-			sG = sG - 1;
-			if (sG < 0) {
-				sG = -1;
-			}
-			PlayerPrefs.SetInt("secf",sG);
-			yield return new WaitForSeconds(1f);
-		}
-	}
 
 }

@@ -10,9 +10,11 @@ public class UnityADS : MonoBehaviour {
     public GameObject GM_fever;
     public int soundck;
 
+	int sG,mG;
 
     // Use this for initialization
     void Start () {
+		StartCoroutine ("adTimeFlow");
           if (Advertisement.isSupported)
           {
               Advertisement.Initialize(gameId, true);
@@ -37,8 +39,8 @@ public class UnityADS : MonoBehaviour {
         {
             GM.GetComponent<GameEvt>().fever = 2;
 			GM.GetComponent<GameEvt>().fever_obj.SetActive (true);
-			goPy.SetActive (false);
 			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
+			goPy.SetActive (false);
 			PlayerPrefs.SetInt("secf",60);
             adsPopup.SetActive(false);
             GM_fever.GetComponent<PopupZoom>().ZoomIn2();
@@ -59,5 +61,25 @@ public class UnityADS : MonoBehaviour {
         adsPopup.SetActive(false);
     }
 
+	IEnumerator adTimeFlow(){
+		while (mG>-1) {
 
+			sG = PlayerPrefs.GetInt("secf",60);
+			mG = (int)(sG / 60);
+			sG = sG-(sG / 60)*60;
+			if (sG < 0) {
+				sG = 0;
+				mG = 0;
+				goPy.SetActive (true);
+			} else {
+			}
+			sG = PlayerPrefs.GetInt("secf",60);
+			sG = sG - 1;
+			if (sG < 0) {
+				sG = -1;
+			}
+			PlayerPrefs.SetInt("secf",sG);
+			yield return new WaitForSeconds(1f);
+		}
+	}
 }

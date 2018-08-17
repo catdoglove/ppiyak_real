@@ -23,6 +23,7 @@ public class BookEvt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		//스프라이트동적할당과 게임오브젝트동적할당
 		string str=this.gameObject.name;
 		if (str.Length < 3) {
