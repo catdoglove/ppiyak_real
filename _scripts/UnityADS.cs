@@ -43,6 +43,7 @@ public class UnityADS : MonoBehaviour {
             adsPopup.SetActive(false);
             GM_fever.GetComponent<PopupZoom>().ZoomIn2();
             soundck = 99;
+            PlayerPrefs.SetInt("popupstart", 9);
         }
     }
 
