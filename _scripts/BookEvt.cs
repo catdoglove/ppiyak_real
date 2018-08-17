@@ -42,7 +42,7 @@ public class BookEvt : MonoBehaviour {
 		Book_obj.SetActive (true);
 		//여기에 효과코딩
 
-		//effectShow_txt.text = GM.GetComponent<ShopEvt> ().BackEffect_str [PlayerPrefs.GetInt ("effect_set", 0)]  + "\n" + GM.GetComponent<ShopEvt> ().BottomEffect_str [PlayerPrefs.GetInt ("beffect_set", 0)]+ "\n" + GM.GetComponent<ShopEvt> ().incubatorEffect_str [PlayerPrefs.GetInt ("ieffect_set", 0)];
+		effectShow_txt.text = GM.GetComponent<ShopEvt> ().BackEffect_str [PlayerPrefs.GetInt ("effect_set", 0)]  + "\n" + GM.GetComponent<ShopEvt> ().BottomEffect_str [PlayerPrefs.GetInt ("beffect_set", 0)]+ "\n" + GM.GetComponent<ShopEvt> ().incubatorEffect_str [PlayerPrefs.GetInt ("ieffect_set", 0)];
 
 
 		for (int i = 0; i < 20; i++) {

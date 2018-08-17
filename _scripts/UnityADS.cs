@@ -38,6 +38,8 @@ public class UnityADS : MonoBehaviour {
             GM.GetComponent<GameEvt>().fever = 2;
 			GM.GetComponent<GameEvt>().fever_obj.SetActive (true);
 			goPy.SetActive (false);
+			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
+			PlayerPrefs.SetInt("secf",60);
             adsPopup.SetActive(false);
             GM_fever.GetComponent<PopupZoom>().ZoomIn2();
             soundck = 99;

@@ -361,6 +361,9 @@ public class ShopEvt : MonoBehaviour {
 			}
 			sG = PlayerPrefs.GetInt("sec",60);
 			sG = sG - 1;
+			if (sG < 0) {
+				sG =-1;
+			}
 			PlayerPrefs.SetInt("sec",sG);
 			yield return new WaitForSeconds(1f);
 		}

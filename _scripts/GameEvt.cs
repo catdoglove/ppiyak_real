@@ -36,6 +36,8 @@ public class GameEvt : MonoBehaviour {
 		ppiyakGood_spr = Resources.LoadAll<Sprite> ("ppiyak/ppiyak_02(170x130)");
 		ppiyakAwesome_spr = Resources.LoadAll<Sprite> ("ppiyak/ppiyak_03(170x130)");
 		egg_spr = Resources.LoadAll<Sprite> ("ppiyak/egg(110x120)");
+
+		StartCoroutine ("adTimeFlow");
 	}
 
 	// Use this for initialization
@@ -65,14 +67,12 @@ public class GameEvt : MonoBehaviour {
 
 	}
 
-
 	public void eggNum1(){
 		c_Num = 0;
 	}
 	public void eggNum3(){
 		c_Num = 2;
 	}
-
 
 	public void touchEgg (){
 		touchNum_i = PlayerPrefs.GetInt ("touch" + c_Num, 0);
@@ -324,12 +324,14 @@ public class GameEvt : MonoBehaviour {
 			if (sG < 0) {
 				sG = 0;
 				mG = 0;
-				AdTime_txt.text = "00:00";
 				goPy.SetActive (true);
 			} else {
 			}
 			sG = PlayerPrefs.GetInt("secf",60);
 			sG = sG - 1;
+			if (sG < 0) {
+				sG = -1;
+			}
 			PlayerPrefs.SetInt("secf",sG);
 			yield return new WaitForSeconds(1f);
 		}
