@@ -270,20 +270,20 @@ public class GameEvt : MonoBehaviour {
 				eggIndex_i = Random.Range (0, rand);
 			}
 
-			rands = Random.Range (2, 2);
+			rands = Random.Range (2, 4);
 			maxNum_i = 10; //★200
 			break;
 		case 2:
-			rand = PlayerPrefs.GetInt ("awesome_unlock",7);
-			eggIndex_i = Random.Range (0,rand);
+			rand = PlayerPrefs.GetInt ("awesome_unlock", 7);
+			eggIndex_i = Random.Range (0, rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0)-13;
+			eff = PlayerPrefs.GetInt ("effect_set", 0) - 13;
 
-			if(eff>0){
+			if (eff > 0) {
 				eggIndex_i = eff;
 			}
 
-			rands = Random.Range (4, 2);
+			rands = Random.Range (4, 6);
 			maxNum_i = 10; //★500
 			break;
 		case 3:
