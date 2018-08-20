@@ -123,15 +123,17 @@ public class GameEvt : MonoBehaviour {
 				string str = PlayerPrefs.GetString ("code", "");
 				GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 				//효과
-				if (PlayerPrefs.GetInt ("beffect_set", 0) >= 3) {
+
+				int bb = PlayerPrefs.GetInt ("bottomset", 0)+1;
+				if (bb > 3) {
 					addCoin = addCoin + 1;
-					if (PlayerPrefs.GetInt ("beffect_set", 0) >= 6) {
+					if (bb > 6) {
 						addCoin = addCoin + 4;
-						if (PlayerPrefs.GetInt ("beffect_set", 0) >= 9) {
+						if (bb> 9) {
 							addCoin = addCoin + 5;
-							if (PlayerPrefs.GetInt ("beffect_set", 0) >= 13) {
+							if (bb > 13) {
 								addCoin = addCoin + 5;
-								if (PlayerPrefs.GetInt ("beffect_set", 0) >= 16) {
+								if (bb > 16) {
 									addCoin = addCoin + 5;
 								}
 							}
@@ -218,7 +220,7 @@ public class GameEvt : MonoBehaviour {
 			rand = PlayerPrefs.GetInt ("basic_unlock", 6);
 			eggIndex_i = Random.Range (1, rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0) + 1;
+			eff = PlayerPrefs.GetInt ("backset", 0) + 2;
 
 			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (1, rand);
@@ -243,7 +245,7 @@ public class GameEvt : MonoBehaviour {
 			rand = PlayerPrefs.GetInt ("good_unlock",8);
 			eggIndex_i = Random.Range (0,rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0)-5;
+			eff = PlayerPrefs.GetInt ("backset", 0)-4;
 
 			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (0, rand);
@@ -277,7 +279,7 @@ public class GameEvt : MonoBehaviour {
 			rand = PlayerPrefs.GetInt ("awesome_unlock", 7);
 			eggIndex_i = Random.Range (0, rand);
 			//효과
-			eff = PlayerPrefs.GetInt ("effect_set", 0) - 13;
+			eff = PlayerPrefs.GetInt ("backset", 0) - 12;
 
 			if (eff > 0) {
 				eggIndex_i = eff;
@@ -291,15 +293,16 @@ public class GameEvt : MonoBehaviour {
 			break;
 		}
 		//효과
-		if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 3) {
+		int ii = PlayerPrefs.GetInt ("incubatorset", 0)+1;
+		if (ii > 3) {
 			maxNum_i = maxNum_i - 1;
-			if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 6) {
+			if (ii > 6) {
 				maxNum_i = maxNum_i - 4;
-				if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 9) {
+				if (ii > 9) {
 					maxNum_i = maxNum_i - 5;
-					if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 13) {
+					if (ii > 13) {
 						maxNum_i = maxNum_i - 5;
-						if (PlayerPrefs.GetInt ("ieffect_set", 0) >= 16) {
+						if (ii > 16) {
 							maxNum_i = maxNum_i - 5;
 						}
 					}
