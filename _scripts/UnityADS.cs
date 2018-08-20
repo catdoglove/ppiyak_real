@@ -27,6 +27,7 @@ public class UnityADS : MonoBehaviour {
     {		
 			if (Advertisement.IsReady("rewardedVideo"))
 			{
+			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
 				ShowOptions options = new ShowOptions { resultCallback = HandleShowResult };
 				Advertisement.Show("rewardedVideo", options);
             }        

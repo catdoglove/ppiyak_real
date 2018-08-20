@@ -21,7 +21,7 @@ public class ShopEvt : MonoBehaviour {
 	public string[] BackEffect_str,BottomEffect_str,incubatorEffect_str;
 	public Text shopEffect_txt;
 
-	int shopIndex_i,shopItem_i;
+	public int shopIndex_i,shopItem_i;
 
 	public Text shopCoin_txt;
 	public GameObject coinPopup_obj;
@@ -36,10 +36,14 @@ public class ShopEvt : MonoBehaviour {
 	int sG,mG;
 	public GameObject adTimeBackImg_obj;
 
-
-
+	//부화기증가
+	public GameObject secIncubator_obj;
+	public GameObject addIncubator_obj;
 	// Use this for initialization
 	void Start () {
+		if(PlayerPrefs.GetInt("secincu",0)==7){
+			secIncubator_obj.SetActive (true);
+		}
 		coinAdPop ();
 		PlayerPrefs.SetInt ("back-1",1);
 		PlayerPrefs.SetInt ("incubator-1",1);
@@ -249,6 +253,10 @@ public class ShopEvt : MonoBehaviour {
 			}
 			useIncubator_obj [PlayerPrefs.GetInt ("incubatorset", 0)+1].SetActive (true);
             PlayerPrefs.SetInt("popupeff", 00);
+			if (shopIndex_i == 4) {
+				PlayerPrefs.SetInt ("secincu", 7);
+				secIncubator_obj.SetActive (true);
+			}
         } else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
@@ -311,13 +319,18 @@ public class ShopEvt : MonoBehaviour {
 				for (int i = 0; i < 20; i++) {
 					useIncubator_obj [i].SetActive (false);
 				}
-				useIncubator_obj [shopIndex_i+1].SetActive (true);
+				useIncubator_obj [shopIndex_i + 1].SetActive (true);
 				PlayerPrefs.SetInt ("incubator" + shopIndex_i, 1);
 				if (shopIndex_i == 18) {
 					haveIncubator_obj [shopIndex_i].SetActive (true);
 				} else {
 					incubatorLock_obj [shopIndex_i].SetActive (false);
 					haveIncubator_obj [shopIndex_i].SetActive (true);
+				}
+				if (shopIndex_i == 4) {
+					PlayerPrefs.SetInt ("secincu", 7);
+					secIncubator_obj.SetActive (true);
+					addIncubator_obj.SetActive (true);
 				}
 				break;
 			}
@@ -356,6 +369,7 @@ public class ShopEvt : MonoBehaviour {
 				mG = 0;
 				AdTime_txt.text = "00:00";
 				AdTime_obj.SetActive (false);
+				PlayerPrefs.SetInt("sec",sG);
 			} else {
 				adTimeBackImg_obj.SetActive (true);
 				string stru= string.Format(@"{0:00}"+":",mG)+string.Format(@"{0:00}",sG);
@@ -367,5 +381,9 @@ public class ShopEvt : MonoBehaviour {
 			PlayerPrefs.SetInt("sec",sG);
 			yield return new WaitForSeconds(1f);
 		}
+	}
+
+	public void addIncubatorClose(){
+		addIncubator_obj.SetActive (false);
 	}
 }
