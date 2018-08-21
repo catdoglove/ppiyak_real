@@ -96,6 +96,11 @@ public class ShopEvt : MonoBehaviour {
 		incubator_obj.SetActive (false);
 
 
+		for (int i = 0; i < 20; i++) {
+			useBottom_obj [i].SetActive (false);
+		}
+		useBottom_obj [PlayerPrefs.GetInt ("bottomset", 0)+1].SetActive (true);
+
 
 		if(bottomLock_obj[0]==null){
 			bottomLock_obj = GameObject.FindGameObjectsWithTag ("bottomlock");
@@ -117,6 +122,13 @@ public class ShopEvt : MonoBehaviour {
 		incubator_obj.SetActive (true);
 		back_obj.SetActive (false);
 		bottom_obj.SetActive (false);
+
+
+		for (int i = 0; i < 20; i++) {
+			useIncubator_obj [i].SetActive (false);
+		}
+		useIncubator_obj [PlayerPrefs.GetInt ("incubatorset", 0)+1].SetActive (true);
+
 
 		if(incubatorLock_obj[0]==null){
 			incubatorLock_obj = GameObject.FindGameObjectsWithTag ("incubator");
