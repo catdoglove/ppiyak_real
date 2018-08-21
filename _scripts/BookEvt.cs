@@ -14,16 +14,14 @@ public class BookEvt : MonoBehaviour {
 	public Sprite[] infoImage_spr,infoName_spr;
 
 	public GameObject[] bookBasic_obj,bookGood_obj,bookAwesome_obj;
-
 	public Sprite[] spr;
 
 	public Text effectShow_txt;
-
+	 
 	List<Dictionary<string,object>> data;
 
 	// Use this for initialization
 	void Start () {
-		
 		//스프라이트동적할당과 게임오브젝트동적할당
 		string str=this.gameObject.name;
 		if (str.Length < 3) {
@@ -43,7 +41,7 @@ public class BookEvt : MonoBehaviour {
 		Book_obj.SetActive (true);
 		//여기에 효과코딩
 
-		effectShow_txt.text = GM.GetComponent<ShopEvt> ().BackEffect_str [PlayerPrefs.GetInt ("backset", 0)]  + "\n" + GM.GetComponent<ShopEvt> ().BottomEffect_str [PlayerPrefs.GetInt ("bottomset", 0)]+ "\n" + GM.GetComponent<ShopEvt> ().incubatorEffect_str [PlayerPrefs.GetInt ("incubatorset", 0)];
+		effectShow_txt.text = GM.GetComponent<ShopEvt> ().BackEffect_str [PlayerPrefs.GetInt ("backset", 0)+1]  + "\n" + GM.GetComponent<ShopEvt> ().BottomEffect_str [PlayerPrefs.GetInt ("bottomset", 0)+1]+ "\n" + GM.GetComponent<ShopEvt> ().incubatorEffect_str [PlayerPrefs.GetInt ("incubatorset", 0)+1];
 
 		for (int i = 0; i < 20; i++) {
 			GM.GetComponent<BookEvt> ().bookGM_str = "Image (" + i + ")";

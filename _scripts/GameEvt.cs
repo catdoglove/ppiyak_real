@@ -201,10 +201,22 @@ public class GameEvt : MonoBehaviour {
 
 	public void eggOk(){
 		eggRare_i = Random.Range (0, 100);
-		if (eggRare_i >= 90) {
+		int rr=90;
+		int nr=65;
+		if (PlayerPrefs.GetInt ("backset", 0) < 4) {
+			rr = 101;
+			nr = 99;
+		}else if (PlayerPrefs.GetInt ("backset", 0) < 12) {
+			rr = 101;
+			nr = 65;
+		}else if(PlayerPrefs.GetInt ("backset", 0) >= 12) {
+			rr = 90;
+			nr = 65;
+		}
+		if (eggRare_i >= rr) {
 			eggRare_i = 2;
 
-		} else if (eggRare_i >= 65) {
+		} else if (eggRare_i >= nr) {
 			eggRare_i = 1;
 		} else {
 			eggRare_i = 0;
@@ -271,7 +283,6 @@ public class GameEvt : MonoBehaviour {
 			if (eff != eggIndex_i) {
 				eggIndex_i = Random.Range (0, rand);
 			}
-
 			rands = Random.Range (2, 4);
 			maxNum_i = 10; //★200
 			break;
@@ -281,7 +292,7 @@ public class GameEvt : MonoBehaviour {
 			//효과
 			eff = PlayerPrefs.GetInt ("backset", 0) - 12;
 
-			if (eff > 0) {
+			if (eff > -1) {
 				eggIndex_i = eff;
 			}
 
@@ -294,6 +305,7 @@ public class GameEvt : MonoBehaviour {
 		}
 		//효과
 		int ii = PlayerPrefs.GetInt ("incubatorset", 0)+1;
+
 		if (ii > 3) {
 			maxNum_i = maxNum_i - 1;
 			if (ii > 6) {
