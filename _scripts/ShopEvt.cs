@@ -16,8 +16,6 @@ public class ShopEvt : MonoBehaviour {
 	public GameObject[] useBack_obj, useBottom_obj, useIncubator_obj;
 	public GameObject[] haveBack_obj, haveBottom_obj, haveIncubator_obj;
 
-	public Button[] backBtn_obj,bottomBtn_obj,incubatorBtn_obj;
-
 	//효과 설명
 
 	public string[] BackEffect_str,BottomEffect_str,incubatorEffect_str;
@@ -43,7 +41,6 @@ public class ShopEvt : MonoBehaviour {
 	public GameObject addIncubator_obj;
 	// Use this for initialization
 	void Start () {
-		
 		if(PlayerPrefs.GetInt("secincu",0)==7){
 			secIncubator_obj.SetActive (true);
 		}
@@ -65,15 +62,13 @@ public class ShopEvt : MonoBehaviour {
 		for (int i = 0; i < 20; i++) {
 			useBack_obj [i].SetActive (false);
 		}
-		useBack_obj [PlayerPrefs.GetInt ("backset", -1)+1].SetActive (true);
+		useBack_obj [PlayerPrefs.GetInt ("backset", 0)+1].SetActive (true);
 
 
 		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("back" + i, 0) == 1) {
 				backLock_obj [i].SetActive (false);
 				haveBack_obj [i].SetActive (true);
-			} else {
-					backBtn_obj [i].GetComponent<Button> ().interactable = false;
 			}
 		}
 		if (PlayerPrefs.GetInt ("back18", 0) == 1) {
@@ -104,7 +99,7 @@ public class ShopEvt : MonoBehaviour {
 		for (int i = 0; i < 20; i++) {
 			useBottom_obj [i].SetActive (false);
 		}
-		useBottom_obj [PlayerPrefs.GetInt ("bottomset", -1)+1].SetActive (true);
+		useBottom_obj [PlayerPrefs.GetInt ("bottomset", 0)+1].SetActive (true);
 
 
 		if(bottomLock_obj[0]==null){
@@ -114,8 +109,6 @@ public class ShopEvt : MonoBehaviour {
 			if (PlayerPrefs.GetInt ("bottom" + i, 0) == 1) {
 				bottomLock_obj [i].SetActive (false);
 				haveBottom_obj [i].SetActive (true);
-			} else {
-					bottomBtn_obj [i].GetComponent<Button> ().interactable = false;
 			}
 		}
 		if (PlayerPrefs.GetInt ("bottom18", 0) == 1) {
@@ -134,7 +127,7 @@ public class ShopEvt : MonoBehaviour {
 		for (int i = 0; i < 20; i++) {
 			useIncubator_obj [i].SetActive (false);
 		}
-		useIncubator_obj [PlayerPrefs.GetInt ("incubatorset", -1)+1].SetActive (true);
+		useIncubator_obj [PlayerPrefs.GetInt ("incubatorset", 0)+1].SetActive (true);
 
 
 		if(incubatorLock_obj[0]==null){
@@ -143,10 +136,7 @@ public class ShopEvt : MonoBehaviour {
 		for(int i=0;i<18;i++){
 			if (PlayerPrefs.GetInt ("incubator" + i, 0) == 1) {
 				incubatorLock_obj [i].SetActive (false);
-
 				haveIncubator_obj [i].SetActive (true);
-			} else {
-					incubatorBtn_obj [i].GetComponent<Button> ().interactable = false;
 			}
 		}
 		if (PlayerPrefs.GetInt ("incubator18", 0) == 1) {
@@ -224,7 +214,11 @@ public class ShopEvt : MonoBehaviour {
 	#endregion
 
 	public void buyShopBack(){
-		if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
+
+        if (shopIndex_i == -1) //기본은 팝업 X
+        { PlayerPrefs.SetInt("popupeff", 00); }
+
+        if (PlayerPrefs.GetInt ("back" + shopIndex_i, 0) == 1) {
 			GM.GetComponent<GameBtnEvt> ().gameBack_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().back_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("backset", shopIndex_i);
 			//효과
@@ -244,7 +238,11 @@ public class ShopEvt : MonoBehaviour {
 	}
 
 	public void buyShopBottom(){
-		if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
+
+        if(shopIndex_i == -1)
+        {  PlayerPrefs.SetInt("popupeff", 00); }
+
+        if (PlayerPrefs.GetInt ("bottom" + shopIndex_i, 0) == 1) {
 		    GM.GetComponent<GameBtnEvt> ().gameBottom_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().bottom_spr [shopIndex_i+1];
 		    PlayerPrefs.SetInt ("bottomset", shopIndex_i);
 			//효과
@@ -264,6 +262,10 @@ public class ShopEvt : MonoBehaviour {
 	}
 		
 	public void buyShopIncubator(){
+
+        if(shopIndex_i == -1)
+        {  PlayerPrefs.SetInt("popupeff", 00); }
+
 		if (PlayerPrefs.GetInt ("incubator" + shopIndex_i, 0) == 1) {
 		    GM.GetComponent<GameBtnEvt> ().gameIncubator1_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
 		    GM.GetComponent<GameBtnEvt> ().gameIncubator2_obj.GetComponent<Image> ().sprite = GM.GetComponent<GameBtnEvt> ().incubator_spr [shopIndex_i+1];
@@ -316,7 +318,6 @@ public class ShopEvt : MonoBehaviour {
 					haveBack_obj [shopIndex_i].SetActive (true);
 				} else {
 					backLock_obj [shopIndex_i].SetActive (false);
-					backBtn_obj [shopIndex_i].GetComponent<Button> ().interactable = true;
 					haveBack_obj [shopIndex_i].SetActive (true);
 				}
 				break;
@@ -332,7 +333,6 @@ public class ShopEvt : MonoBehaviour {
 					haveBottom_obj [shopIndex_i].SetActive (true);
 				} else {
 					bottomLock_obj [shopIndex_i].SetActive (false);
-					bottomBtn_obj [shopIndex_i].GetComponent<Button> ().interactable = true;
 					haveBottom_obj [shopIndex_i].SetActive (true);
 				}
 				break;
@@ -349,7 +349,6 @@ public class ShopEvt : MonoBehaviour {
 					haveIncubator_obj [shopIndex_i].SetActive (true);
 				} else {
 					incubatorLock_obj [shopIndex_i].SetActive (false);
-					incubatorBtn_obj [shopIndex_i].GetComponent<Button> ().interactable = true;
 					haveIncubator_obj [shopIndex_i].SetActive (true);
 				}
 				if (shopIndex_i == 4) {
@@ -385,7 +384,7 @@ public class ShopEvt : MonoBehaviour {
 
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
-			sG = PlayerPrefs.GetInt("sec",60);
+			sG = PlayerPrefs.GetInt("sec",600);
 			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
 			if (sG < 0) {
@@ -401,7 +400,7 @@ public class ShopEvt : MonoBehaviour {
 				AdTime_txt.text = stru;
 				AdTime_obj.SetActive (true);
 			}
-			sG = PlayerPrefs.GetInt("sec",60);
+			sG = PlayerPrefs.GetInt("sec",600);
 			sG = sG - 1;
 			PlayerPrefs.SetInt("sec",sG);
 			yield return new WaitForSeconds(1f);

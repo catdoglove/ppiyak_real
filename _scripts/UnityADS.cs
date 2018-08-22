@@ -24,13 +24,17 @@ public class UnityADS : MonoBehaviour {
     // Update is called once per frame
 
     public void ShowRewardedAd()
-    {		
-			if (Advertisement.IsReady("rewardedVideo"))
-			{
-			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
-				ShowOptions options = new ShowOptions { resultCallback = HandleShowResult };
-				Advertisement.Show("rewardedVideo", options);
-            }        
+    {
+        if (Advertisement.IsReady("rewardedVideo"))
+        {
+            goPy.GetComponent<GoPPiyak>().moveX = 3.5f;
+            ShowOptions options = new ShowOptions { resultCallback = HandleShowResult };
+            Advertisement.Show("rewardedVideo", options);
+        }
+        else
+        {
+            GM.GetComponent<GameEvt>().StartCoroutine("adsNoShow");
+        }
     }
     
 

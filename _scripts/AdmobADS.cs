@@ -86,16 +86,13 @@ public class AdmobADS : MonoBehaviour {
         rewardCoin = PlayerPrefs.GetInt(str, 0);
         rewardCoin = rewardCoin + 100;
         PlayerPrefs.SetInt(str, rewardCoin);
-
-
-
+        
         str = PlayerPrefs.GetString("code", "");
         GM.GetComponent<GameBtnEvt>().gameCoin_i = PlayerPrefs.GetInt(str, 0);
         GM.GetComponent<ShopEvt>().shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt>().gameCoin_i;
 
-
         //시간타이머
-        PlayerPrefs.SetInt("sec",60);
+        PlayerPrefs.SetInt("sec",600);
     }
 
     //동영상닫음
@@ -107,14 +104,13 @@ public class AdmobADS : MonoBehaviour {
 
     public void showAdmobVideo()
     {
-		PlayerPrefs.SetInt("sec",60);
         if (rewardBasedVideo.IsLoaded())
         {
             rewardBasedVideo.Show();
         }
         else
         {
-            //시청안된다는 메세지라도 띄워야하나 허엄
+            GM.GetComponent<GameEvt>().StartCoroutine("adsNoShow");
         }
     }
 
