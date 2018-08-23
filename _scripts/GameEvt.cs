@@ -298,7 +298,7 @@ public class GameEvt : MonoBehaviour
                 }
 
                 rands = Random.Range(0, 2);
-                maxNum_i = 10; //★100
+                maxNum_i = 150; //★100
                 break;
             case 1:
                 rand = PlayerPrefs.GetInt("good_unlock", 8);
@@ -339,7 +339,7 @@ public class GameEvt : MonoBehaviour
                     eggIndex_i = Random.Range(0, rand);
                 }
                 rands = Random.Range(2, 4);
-                maxNum_i = 10; //★200
+                maxNum_i = 250; //★200
                 break;
             case 2:
                 rand = PlayerPrefs.GetInt("awesome_unlock", 7);
@@ -353,7 +353,7 @@ public class GameEvt : MonoBehaviour
                 }
 
                 rands = Random.Range(4, 6);
-                maxNum_i = 10; //★500
+                maxNum_i = 500; //★500
                 break;
             case 3:
                 maxNum_i = Random.Range(11, 21);

@@ -42,11 +42,11 @@ public class UnityADS : MonoBehaviour {
     {
         if (result == ShowResult.Finished)
         {
-            GM.GetComponent<GameEvt>().fever = 2;
+            GM.GetComponent<GameEvt>().fever = 50;
 			GM.GetComponent<GameEvt>().fever_obj.SetActive (true);
 			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
 			goPy.SetActive (false);
-			PlayerPrefs.SetInt("secf",60);
+			PlayerPrefs.SetInt("secf",420);
             adsPopup.SetActive(false);
             GM_fever.GetComponent<PopupZoom>().ZoomIn2();
             soundck = 99;
@@ -69,7 +69,7 @@ public class UnityADS : MonoBehaviour {
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
 
-			sG = PlayerPrefs.GetInt("secf",60);
+			sG = PlayerPrefs.GetInt("secf",420);
 			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
 			if (sG < 0) {
@@ -78,7 +78,7 @@ public class UnityADS : MonoBehaviour {
 				goPy.SetActive (true);
 			} else {
 			}
-			sG = PlayerPrefs.GetInt("secf",60);
+			sG = PlayerPrefs.GetInt("secf",420);
 			sG = sG - 1;
 			if (sG < 0) {
 				sG = -1;
