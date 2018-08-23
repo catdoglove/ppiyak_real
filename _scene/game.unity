@@ -2903,7 +2903,7 @@ RectTransform:
   m_GameObject: {fileID: 108833267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007022727, y: 0.007022727, z: 0.007022727}
+  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
   m_Children:
   - {fileID: 1350763818}
   - {fileID: 151364085}
@@ -12273,7 +12273,7 @@ RectTransform:
   m_GameObject: {fileID: 501118648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007022727, y: 0.007022727, z: 0.007022727}
+  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
   m_Children:
   - {fileID: 319718376}
   - {fileID: 705364750}
@@ -39760,6 +39760,63 @@ MonoBehaviour:
   - {fileID: 1926290933}
   - {fileID: 634610121}
   - {fileID: 69604562}
+  backBtn_obj:
+  - {fileID: 220999906}
+  - {fileID: 1468395685}
+  - {fileID: 554933298}
+  - {fileID: 2140346588}
+  - {fileID: 624949660}
+  - {fileID: 1483063483}
+  - {fileID: 1596992991}
+  - {fileID: 334046182}
+  - {fileID: 260986156}
+  - {fileID: 1006077112}
+  - {fileID: 387674591}
+  - {fileID: 1222284341}
+  - {fileID: 114709371}
+  - {fileID: 1656348465}
+  - {fileID: 155900569}
+  - {fileID: 464174343}
+  - {fileID: 2119392012}
+  - {fileID: 741929999}
+  bottomBtn_obj:
+  - {fileID: 272873979}
+  - {fileID: 1893447938}
+  - {fileID: 887604276}
+  - {fileID: 1572011365}
+  - {fileID: 38553222}
+  - {fileID: 1806039999}
+  - {fileID: 931911419}
+  - {fileID: 2129930918}
+  - {fileID: 1405573375}
+  - {fileID: 901593582}
+  - {fileID: 244901336}
+  - {fileID: 1265421913}
+  - {fileID: 1979843535}
+  - {fileID: 587404204}
+  - {fileID: 384461697}
+  - {fileID: 324387020}
+  - {fileID: 1184000217}
+  - {fileID: 1609389616}
+  incubatorBtn_obj:
+  - {fileID: 229278277}
+  - {fileID: 1814932145}
+  - {fileID: 1582803483}
+  - {fileID: 166143039}
+  - {fileID: 494895932}
+  - {fileID: 454376385}
+  - {fileID: 1352726754}
+  - {fileID: 1900849154}
+  - {fileID: 752178994}
+  - {fileID: 1161938926}
+  - {fileID: 525849420}
+  - {fileID: 1571819142}
+  - {fileID: 1108704515}
+  - {fileID: 2043966217}
+  - {fileID: 796769053}
+  - {fileID: 213016856}
+  - {fileID: 426005465}
+  - {fileID: 464104147}
   BackEffect_str:
   - "\uD14C\uB9C8\uC5D0 \uB9DE\uB294 \uBCD1\uC544\uB9AC \uD655\uB960 UP"
   - "\uD14C\uB9C8\uC5D0 \uB9DE\uB294 \uBCD1\uC544\uB9AC \uD655\uB960 UP"
@@ -45279,7 +45336,7 @@ RectTransform:
   m_GameObject: {fileID: 2063919764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007022727, y: 0.007022727, z: 0.007022727}
+  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
   m_Children:
   - {fileID: 315947451}
   - {fileID: 70827239}
