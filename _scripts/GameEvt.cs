@@ -49,6 +49,39 @@ public class GameEvt : MonoBehaviour
     void Start()
     {
 
+
+        //화면 해상도
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        float screenNum = (float)Screen.width / (float)Screen.height;
+        if (screenNum < 0.57f)
+        {
+            Screen.SetResolution(Screen.height / 16 * 9, Screen.height, true);
+        }
+        else if (screenNum >= 0.57f && screenNum < 0.62f)
+        {
+            Screen.SetResolution(Screen.height / 5 * 3, Screen.height, true);
+        }
+        else if (screenNum >= 0.62f && screenNum < 0.65f)
+        {
+            Screen.SetResolution(Screen.height / 16 * 10, Screen.height, true);
+        }
+        else if (screenNum >= 0.65f && screenNum < 0.7f)
+        {
+            Screen.SetResolution(Screen.height / 3 * 2, Screen.height , true);
+        }
+        else if (screenNum >= 0.7f)
+        {
+            Screen.SetResolution(Screen.height / 4 * 3, Screen.height, true);
+        }
+        else
+        {
+            Screen.SetResolution(Screen.height / 3 * 2, Screen.height, true);
+        }
+
+
+
+
+
         //GM = GameObject.FindGameObjectWithTag ("GameObject");
         //각각병아리별로이름을 받아오기
         //자신의 이름을 불러옴
@@ -59,7 +92,7 @@ public class GameEvt : MonoBehaviour
             c_Num = int.Parse(str.Substring(5)) - 1;
             //번호별로 저장된값 불러옴
             eggRare_i = PlayerPrefs.GetInt("rare" + c_Num, 0);
-            maxNum_i = PlayerPrefs.GetInt("max" + c_Num, 5);
+            maxNum_i = PlayerPrefs.GetInt("max" + c_Num, 100);
             touchNum_i = PlayerPrefs.GetInt("touch" + c_Num, 0);
             eggIndex_i = PlayerPrefs.GetInt("index" + c_Num, 0);
             //병아리이미지 바꾸기
@@ -102,27 +135,30 @@ public class GameEvt : MonoBehaviour
 
             //번호별로 저장된값 불러옴
             eggRare_i = PlayerPrefs.GetInt("rare" + c_Num, 0);
-            maxNum_i = PlayerPrefs.GetInt("max" + c_Num, 5);
+            maxNum_i = PlayerPrefs.GetInt("max" + c_Num, 100);
             touchNum_i = PlayerPrefs.GetInt("touch" + c_Num, 0);
             eggIndex_i = PlayerPrefs.GetInt("index" + c_Num, 1);
 
 
             touchNum_i++;
 
-            if (fever > 0)
+            if (GM.GetComponent<GameEvt>().fever > 0)
             { //피버타임
                 touchNum_i++;
-                fever = fever - 2;
+                GM.GetComponent<GameEvt>().fever = GM.GetComponent<GameEvt>().fever - 2;
             }
-
-            //뭘 변수를 만들어서 피버타임이 발동 될 때만 실행이 되도록
-            if (PlayerPrefs.GetInt("popupstart", 0) == 9)
+            else
             {
-                GM_fever.GetComponent<PopupZoom>().fadeouttt();
-                PlayerPrefs.SetInt("popuptouch", 9);
-                PlayerPrefs.SetInt("popupstart", 1);
+                //뭘 변수를 만들어서 피버타임이 발동 될 때만 실행이 되도록
+                if (PlayerPrefs.GetInt("popupstart", 0) == 9)
+                {
+                    GM_fever.GetComponent<PopupZoom>().fadeouttt();
+                    PlayerPrefs.SetInt("popuptouch", 9);
+                    PlayerPrefs.SetInt("popupstart", 1);
 
+                }
             }
+
 
             PlayerPrefs.SetInt("touch" + c_Num, touchNum_i);
 
@@ -298,7 +334,7 @@ public class GameEvt : MonoBehaviour
                 }
 
                 rands = Random.Range(0, 2);
-                maxNum_i = 150; //★100
+                maxNum_i = 100; //★100 <그냥 150에서 100하기로함
                 break;
             case 1:
                 rand = PlayerPrefs.GetInt("good_unlock", 8);

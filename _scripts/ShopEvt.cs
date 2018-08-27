@@ -395,7 +395,7 @@ public class ShopEvt : MonoBehaviour {
 
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
-			sG = PlayerPrefs.GetInt("sec",600);
+			sG = PlayerPrefs.GetInt("sec",0);
 			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
 			if (sG < 0) {
@@ -411,7 +411,7 @@ public class ShopEvt : MonoBehaviour {
 				AdTime_txt.text = stru;
 				AdTime_obj.SetActive (true);
 			}
-			sG = PlayerPrefs.GetInt("sec",600);
+			sG = PlayerPrefs.GetInt("sec",0);
 			sG = sG - 1;
 			PlayerPrefs.SetInt("sec",sG);
 			yield return new WaitForSeconds(1f);
