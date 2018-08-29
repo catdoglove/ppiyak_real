@@ -18,7 +18,7 @@ public class OptionEvt : MonoBehaviour {
 
 
     void Start () {
-
+		//주석
         //알게된 정보 : gameobject = GM으로 나오고 go대신 직접 변수쓰면 아래와 같음
         bgm_first = bgm_first.GetComponent<AudioSource>();
 
