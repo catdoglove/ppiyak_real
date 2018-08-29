@@ -2903,7 +2903,7 @@ RectTransform:
   m_GameObject: {fileID: 108833267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
+  m_LocalScale: {x: 0.0070285466, y: 0.0070285466, z: 0.0070285466}
   m_Children:
   - {fileID: 1350763818}
   - {fileID: 151364085}
@@ -4129,7 +4129,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 56ca6aefd670cfe45beb6f9364fcef92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e50237294f02e14495db5ad82b62f13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4876,7 +4876,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 19f1c4a17035c2143bfbdb7ad4fcefe2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42edccf29e6adcc4d900bf25beac73f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6302,7 +6302,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 19f1c4a17035c2143bfbdb7ad4fcefe2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42edccf29e6adcc4d900bf25beac73f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12273,7 +12273,7 @@ RectTransform:
   m_GameObject: {fileID: 501118648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
+  m_LocalScale: {x: 0.0070285466, y: 0.0070285466, z: 0.0070285466}
   m_Children:
   - {fileID: 319718376}
   - {fileID: 705364750}
@@ -19016,7 +19016,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 500.00006, y: 374.99994}
-  m_SizeDelta: {x: 90, y: 130}
+  m_SizeDelta: {x: 90, y: 152.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &799720377
 MonoBehaviour:
@@ -24052,7 +24052,7 @@ Transform:
   m_GameObject: {fileID: 1072963047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -468, z: -12795.544}
-  m_LocalScale: {x: 150, y: 150, z: 0}
+  m_LocalScale: {x: 169.19496, y: 150, z: 0}
   m_Children: []
   m_Father: {fileID: 2063919768}
   m_RootOrder: 3
@@ -25694,7 +25694,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 130b4a5df5f07aa4b925e5d19f6379a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42edccf29e6adcc4d900bf25beac73f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29609,7 +29609,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 73f96fa364bb1ef4b8a635db7f42bdce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb286a14ddcc4064890fab5c97b381ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -39433,6 +39433,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameCoin_i: 0
+  help_obj: {fileID: 708822998}
 --- !u!114 &1824201777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44509,7 +44510,7 @@ Transform:
   m_GameObject: {fileID: 2028888910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1, y: -0.61, z: -12808.01}
-  m_LocalScale: {x: 99.6706, y: 99.6706, z: 0}
+  m_LocalScale: {x: 105.94468, y: 99.6706, z: 0}
   m_Children: []
   m_Father: {fileID: 799720376}
   m_RootOrder: 0
@@ -45336,7 +45337,7 @@ RectTransform:
   m_GameObject: {fileID: 2063919764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.007048611, y: 0.007048611, z: 0.007048611}
+  m_LocalScale: {x: 0.0070285466, y: 0.0070285466, z: 0.0070285466}
   m_Children:
   - {fileID: 315947451}
   - {fileID: 70827239}

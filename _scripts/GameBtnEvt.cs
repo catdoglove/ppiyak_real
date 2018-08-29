@@ -19,8 +19,10 @@ public class GameBtnEvt : MonoBehaviour {
 
 	//처음시작
 	string str;
+    public GameObject help_obj;
 
-	void Awake(){
+
+    void Awake(){
 		for (int i = 0; i < 20; i++) {
 			i++;
 			back_spr[i-1]=Resources.Load<Sprite>("thema/bg("+i+")");
@@ -46,7 +48,12 @@ public class GameBtnEvt : MonoBehaviour {
 		//처음할때 자신만의 코드를 만들어줌
 		int c=0;
 		if (c == PlayerPrefs.GetInt ("first", 0)) {
-			for (int i = 0; i < 16; i++) {
+
+            //도움말 맨첨 실행
+            help_obj.SetActive(true);
+
+
+            for (int i = 0; i < 16; i++) {
 				int a = Random.Range (0, 16);//0~15
 
 				switch (a) {
