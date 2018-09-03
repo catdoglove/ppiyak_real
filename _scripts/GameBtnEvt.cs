@@ -143,6 +143,7 @@ public class GameBtnEvt : MonoBehaviour {
 
     public void goOutYes()
     {
+        PlayerPrefs.SetInt("popuptouch", 1);
         Application.Quit();
     }
 

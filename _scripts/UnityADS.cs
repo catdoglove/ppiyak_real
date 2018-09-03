@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 
 public class UnityADS : MonoBehaviour {
 
-    private string gameId = "1486550";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
+    private string gameId = "2686032";//★테스트ID , Window > Services 설정 테스트 바꿀것 test 1486550
 	public GameObject GM,adsPopup,goPy;
     public GameObject GM_fever;
     public int soundck;
@@ -42,15 +42,15 @@ public class UnityADS : MonoBehaviour {
     {
         if (result == ShowResult.Finished)
         {
+            PlayerPrefs.SetInt("popupstart", 9);
             GM.GetComponent<GameEvt>().fever = 50;
 			GM.GetComponent<GameEvt>().fever_obj.SetActive (true);
 			goPy.GetComponent<GoPPiyak> ().moveX = 3.5f;
 			goPy.SetActive (false);
-			PlayerPrefs.SetInt("secf",420);
+			PlayerPrefs.SetInt("secf",300);
             adsPopup.SetActive(false);
             GM_fever.GetComponent<PopupZoom>().ZoomIn2();
             soundck = 99;
-            PlayerPrefs.SetInt("popupstart", 9);
         }
     }
 
@@ -69,7 +69,7 @@ public class UnityADS : MonoBehaviour {
 	IEnumerator adTimeFlow(){
 		while (mG>-1) {
 
-			sG = PlayerPrefs.GetInt("secf",420);
+			sG = PlayerPrefs.GetInt("secf",300);
 			mG = (int)(sG / 60);
 			sG = sG-(sG / 60)*60;
 			if (sG < 0) {
@@ -78,7 +78,7 @@ public class UnityADS : MonoBehaviour {
 				goPy.SetActive (true);
 			} else {
 			}
-			sG = PlayerPrefs.GetInt("secf",420);
+			sG = PlayerPrefs.GetInt("secf",300);
 			sG = sG - 1;
 			if (sG < 0) {
 				sG = -1;

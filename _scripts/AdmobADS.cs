@@ -20,10 +20,10 @@ public class AdmobADS : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-     rewardCoin = GM.GetComponent<GameBtnEvt>().gameCoin_i;
+        rewardCoin = GM.GetComponent<GameBtnEvt>().gameCoin_i;
 
 #if UNITY_ANDROID
-        string appId = "ca-app-pub-3940256099942544~3347511713";
+        string appId = "ca-app-pub-9179569099191885~4358577212";
 #elif UNITY_IPHONE
             string appId = "ca-app-pub-3940256099942544~1458002511";
 #else
@@ -49,7 +49,7 @@ public class AdmobADS : MonoBehaviour {
     private void RequestBanner()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        string adUnitId = "ca-app-pub-9179569099191885/5063076807";
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/2934735716";
 #else
@@ -71,7 +71,7 @@ public class AdmobADS : MonoBehaviour {
 
     private void RequestRewardedVideo()
     {
-        adUnitIdvideo = "ca-app-pub-3940256099942544/5224354917";
+        adUnitIdvideo = "ca-app-pub-9179569099191885/4023551206";
         // Create an empty ad request.
         request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
@@ -84,15 +84,16 @@ public class AdmobADS : MonoBehaviour {
         //코인 10분마다 100원 지급
         string str = PlayerPrefs.GetString("code", "");
         rewardCoin = PlayerPrefs.GetInt(str, 0);
-        rewardCoin = rewardCoin + 100;
+        rewardCoin = rewardCoin + 50;
         PlayerPrefs.SetInt(str, rewardCoin);
+        PlayerPrefs.Save();
         
         str = PlayerPrefs.GetString("code", "");
         GM.GetComponent<GameBtnEvt>().gameCoin_i = PlayerPrefs.GetInt(str, 0);
         GM.GetComponent<ShopEvt>().shopCoin_txt.text = "" + GM.GetComponent<GameBtnEvt>().gameCoin_i;
 
         //시간타이머
-        PlayerPrefs.SetInt("sec",600);
+        PlayerPrefs.SetInt("sec",300);
     }
 
     //동영상닫음

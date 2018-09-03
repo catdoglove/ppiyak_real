@@ -239,7 +239,7 @@ public class ShopEvt : MonoBehaviour {
 		} else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			shopEffect_txt.text = BackEffect_str [shopIndex_i];
+			shopEffect_txt.text = BackEffect_str [shopIndex_i+1];
 		    shopItem_i = 1;
 		}
 		PlayerPrefs.Save ();
@@ -263,7 +263,7 @@ public class ShopEvt : MonoBehaviour {
         } else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			shopEffect_txt.text = BottomEffect_str [shopIndex_i];
+			shopEffect_txt.text = BottomEffect_str [shopIndex_i+1];
 		    shopItem_i = 2;
 		}
 		PlayerPrefs.Save ();
@@ -292,7 +292,7 @@ public class ShopEvt : MonoBehaviour {
         } else {
             PlayerPrefs.SetInt("popupeff", 99);
 		    shopBuyPopup_obj.SetActive(true);
-			shopEffect_txt.text = incubatorEffect_str [shopIndex_i];
+			shopEffect_txt.text = incubatorEffect_str [shopIndex_i+1];
 		    shopItem_i = 3;
 		}
 		PlayerPrefs.Save ();

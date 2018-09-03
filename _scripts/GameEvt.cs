@@ -48,8 +48,6 @@ public class GameEvt : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-
         //화면 해상도
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         float screenNum = (float)Screen.width / (float)Screen.height;
@@ -148,12 +146,12 @@ public class GameEvt : MonoBehaviour
                 GM.GetComponent<GameEvt>().fever = GM.GetComponent<GameEvt>().fever - 2;
             }
             else
-            {
+            {//★피버타임 fever
                 //뭘 변수를 만들어서 피버타임이 발동 될 때만 실행이 되도록
                 if (PlayerPrefs.GetInt("popupstart", 0) == 9)
                 {
+                    PlayerPrefs.SetInt("popuptouch", 9); //팝업 줌때문에
                     GM_fever.GetComponent<PopupZoom>().fadeouttt();
-                    PlayerPrefs.SetInt("popuptouch", 9);
                     PlayerPrefs.SetInt("popupstart", 1);
 
                 }
@@ -179,19 +177,19 @@ public class GameEvt : MonoBehaviour
                 //효과
 
                 int bb = PlayerPrefs.GetInt("bottomset", 0) + 1;
-                if (bb > 3)
+                if (bb >= 3)
                 {
                     addCoin = addCoin + 10;
-                    if (bb > 6)
+                    if (bb >= 6)
                     {
                         addCoin = addCoin + 15;
-                        if (bb > 9)
+                        if (bb >= 9)
                         {
                             addCoin = addCoin + 25;
-                            if (bb > 13)
+                            if (bb >= 13)
                             {
                                 addCoin = addCoin + 25;
-                                if (bb > 16)
+                                if (bb >= 16)
                                 {
                                     addCoin = addCoin + 25;
                                 }
@@ -398,19 +396,19 @@ public class GameEvt : MonoBehaviour
         //효과
         int ii = PlayerPrefs.GetInt("incubatorset", 0) + 1;
 
-        if (ii > 3)
+        if (ii >= 3)
         {
             maxNum_i = maxNum_i - 1;
-            if (ii > 6)
+            if (ii >= 6)
             {
                 maxNum_i = maxNum_i - 4;
-                if (ii > 9)
+                if (ii >= 9)
                 {
                     maxNum_i = maxNum_i - 5;
-                    if (ii > 13)
+                    if (ii >= 13)
                     {
                         maxNum_i = maxNum_i - 5;
-                        if (ii > 16)
+                        if (ii >= 16)
                         {
                             maxNum_i = maxNum_i - 5;
                         }
