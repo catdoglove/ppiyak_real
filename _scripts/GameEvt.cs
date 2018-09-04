@@ -165,6 +165,9 @@ public class GameEvt : MonoBehaviour
             //터치수가채워지면부화
             if (touchNum_i >= maxNum_i)
             {
+				//업적
+				PlayerPrefs.SetInt ("reward0", 1);
+
                 //부화됨터치횟수초기화하고다음알의희귀도를지정
                 PlayerPrefs.SetInt("bornppiyak", 99);
 
