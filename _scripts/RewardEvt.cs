@@ -12,14 +12,25 @@ public class RewardEvt : MonoBehaviour {
 
 	public int rewardIndex_i;
 
-	public GameObject GM;
+	public GameObject GM, rewardWindow;
 
 	// Use this for initialization
 	void Start () {
 		
 	}
 
-	public void openReward(){
+    public void opienWindow()
+    {
+        rewardWindow.SetActive(true);
+    }
+
+
+    public void closenWindow()
+    {
+        rewardWindow.SetActive(false);
+    }
+
+    public void openReward(){
 		//예능
 		if (PlayerPrefs.GetInt ("basic_book" + 2, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 1, 2);
@@ -110,7 +121,7 @@ public class RewardEvt : MonoBehaviour {
 		reward_btn [rewardIndex_i].GetComponent<Button> ().interactable = false;
 		string str = PlayerPrefs.GetString ("code", "");
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
-		GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + coin_i;
+		GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + coin_i[rewardIndex_i];
 		PlayerPrefs.SetInt ("reward"+rewardIndex_i, 4);
 		PlayerPrefs.Save ();
 	}
@@ -121,31 +132,31 @@ public class RewardEvt : MonoBehaviour {
 		rewardIndex_i = 0;
 	}
 
-	public void getIndex0(){
+	public void getIndex1(){
 		rewardIndex_i = 1;
 	}
 
-	public void getIndex0(){
+	public void getIndex2(){
 		rewardIndex_i = 2;
 	}
 
-	public void getIndex0(){
+	public void getIndex3(){
 		rewardIndex_i = 3;
 	}
 
-	public void getIndex0(){
+	public void getIndex4(){
 		rewardIndex_i = 4;
 	}
 
-	public void getIndex0(){
+	public void getIndex5(){
 		rewardIndex_i = 5;
 	}
 
-	public void getIndex0(){
+	public void getIndex6(){
 		rewardIndex_i = 6;
 	}
 
-	public void getIndex0(){
+	public void getIndex7(){
 		rewardIndex_i = 7;
 	}
 
