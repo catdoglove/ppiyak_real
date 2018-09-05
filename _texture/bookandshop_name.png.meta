@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: c32e831c9cd6ce04ba2b4ebfdc64f5b4
-timeCreated: 1530517264
+timeCreated: 1536130850
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: bookandshop_name_0
     21300002: bookandshop_name_1
+    21300004: bookandshop_name_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -111,7 +112,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 70
+        y: 140
         width: 240
         height: 70
       alignment: 0
@@ -122,6 +123,20 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: bookandshop_name_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 240
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bookandshop_name_2
       rect:
         serializedVersion: 2
         x: 0
