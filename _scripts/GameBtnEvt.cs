@@ -174,20 +174,23 @@ public class GameBtnEvt : MonoBehaviour {
 	#region
 
 	IEnumerator btnMove(){
-		while (gameButtons_obj[0].transform.position.x <= 1.99f)
+		while (gameButtons_obj[0].transform.position.x <= 2.09f)
 		{
 			yield return new WaitForSeconds(0.03f);		
 
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 4; i++) {
 				switch (i) {
 				case 0:
-					buttonPos_f = 2f;
+					buttonPos_f = 2.1f;
 					break;
 				case 1:
-					buttonPos_f = 0.6f;
+					buttonPos_f = 1.05f;
 					break;
 				case 2:
-					buttonPos_f = -0.8f;
+					buttonPos_f = -0.05f;
+					break;
+				case 3:
+					buttonPos_f = -1.1f;
 					break;
 				}
 				gameButtons_obj [i].transform.position = Vector2.Lerp (gameButtons_obj [i].transform.position, new Vector2 (buttonPos_f, gameButtons_obj [i].transform.position.y), 20f * Time.deltaTime);
@@ -196,13 +199,13 @@ public class GameBtnEvt : MonoBehaviour {
 	}
 
 	IEnumerator imgFadeIn(){
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			color = gameButtons_obj [i].GetComponent<Image> ().color;	
 		}
 		for (float i = 0f; i < 2f; i += 0.1f) {
 			//Debug.Log (i);
 			color.a = Mathf.Lerp (0f, 1f, i);
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 4; j++) {
 				gameButtons_obj [j].GetComponent<Image> ().color = color;
 			}
 			yield return null;
@@ -216,7 +219,7 @@ public class GameBtnEvt : MonoBehaviour {
 		while (gameButtons_obj[0].transform.position.x >= -2.19f)
 		{
 			yield return new WaitForSeconds(0.03f);		
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 4; i++) {
 				gameButtons_obj [i].transform.position = Vector2.Lerp (gameButtons_obj [i].transform.position, new Vector2 (-2.2f, gameButtons_obj [i].transform.position.y), 20f * Time.deltaTime);
 			}
 		}
@@ -224,13 +227,13 @@ public class GameBtnEvt : MonoBehaviour {
 
 
 	IEnumerator imgFadeOut(){
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			color = gameButtons_obj [i].GetComponent<Image> ().color;	
 		}
 		for (float i = 1f; i > -1f; i -= 0.1f) {
 			//Debug.Log (i);
 			color.a = Mathf.Lerp (0f, 1f, i);
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 4; j++) {
 				gameButtons_obj [j].GetComponent<Image> ().color = color;
 			}
 			yield return null;

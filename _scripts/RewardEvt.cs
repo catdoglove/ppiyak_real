@@ -108,10 +108,10 @@ public class RewardEvt : MonoBehaviour {
 				reward_btn [i].GetComponent<Button> ().interactable = true;
 			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 2){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_l [i];
-				reward_btn [i].GetComponent<Button> ().interactable = true;
+				reward_btn [i].GetComponent<Button> ().interactable = false;
 			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 3){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_r [i];
-				reward_btn [i].GetComponent<Button> ().interactable = true;
+				reward_btn [i].GetComponent<Button> ().interactable = false;
 			}
 		}
 
