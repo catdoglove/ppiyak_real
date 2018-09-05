@@ -32,7 +32,9 @@ public class RewardEvt : MonoBehaviour {
 
     public void openReward(){
 		//예능
-		if (PlayerPrefs.GetInt ("basic_book" + 2, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward1",0)==4){
+			
+		}else if (PlayerPrefs.GetInt ("basic_book" + 2, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 1, 2);
 			if (PlayerPrefs.GetInt ("basic_book" + 4, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 1, 1);
@@ -41,7 +43,9 @@ public class RewardEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("reward" + 1, 3);
 		}
 		//사막
-		if (PlayerPrefs.GetInt ("good_book" + 1, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward2",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("good_book" + 1, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 2, 2);
 			if (PlayerPrefs.GetInt ("good_book" + 2, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 2, 1);
@@ -50,7 +54,9 @@ public class RewardEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("reward" + 2, 3);
 		}
 		//야근
-		if (PlayerPrefs.GetInt ("basic_book" + 3, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward3",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("basic_book" + 3, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 3, 2);
 			if (PlayerPrefs.GetInt ("good_book" + 6, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 3, 1);
@@ -59,7 +65,9 @@ public class RewardEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("reward" + 3, 3);
 		}
 		//바캉
-		if (PlayerPrefs.GetInt ("good_book" + 4, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward4",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("good_book" + 4, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 4, 2);
 			if (PlayerPrefs.GetInt ("awesome_book" + 3, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 4, 1);
@@ -68,7 +76,9 @@ public class RewardEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("reward" + 4, 3);
 		}
 		//달콤
-		if (PlayerPrefs.GetInt ("good_book" + 3, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward5",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("good_book" + 3, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 5, 2);
 			if (PlayerPrefs.GetInt ("awesome_book" + 4, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 5, 1);
@@ -77,7 +87,9 @@ public class RewardEvt : MonoBehaviour {
 			PlayerPrefs.SetInt ("reward" + 5, 3);
 		}
 		//추워
-		if (PlayerPrefs.GetInt ("awesome_book" + 0, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward6",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("awesome_book" + 0, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 6, 2);
 			if (PlayerPrefs.GetInt ("awesome_book" + 1, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 6, 1);
@@ -87,7 +99,9 @@ public class RewardEvt : MonoBehaviour {
 		}
 		//단칸
 
-		if (PlayerPrefs.GetInt ("good_book" + 7, 0) == 1) {
+		if(PlayerPrefs.GetInt ("reward7",0)==4){
+
+		}else if (PlayerPrefs.GetInt ("good_book" + 7, 0) == 1) {
 			PlayerPrefs.SetInt ("reward" + 7, 2);
 			if (PlayerPrefs.GetInt ("awesome_book" + 6, 0) == 1) {
 				PlayerPrefs.SetInt ("reward" + 7, 1);
@@ -110,11 +124,11 @@ public class RewardEvt : MonoBehaviour {
 			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 2){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_l [i];
 				reward_btn [i].GetComponent<Button> ().interactable = false;
-                success_obj[i].SetActive(true);
+                
             } else if (PlayerPrefs.GetInt ("reward" + i, 0) == 3){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_r [i];
 				reward_btn [i].GetComponent<Button> ().interactable = false;
-                success_obj[i].SetActive(true);
+                
             }
 		}
 
@@ -127,7 +141,7 @@ public class RewardEvt : MonoBehaviour {
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + coin_i[rewardIndex_i];
 		PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
-		PlayerPrefs.SetInt ("reward"+rewardIndex_i, 4);
+		PlayerPrefs.SetInt ("reward" + rewardIndex_i, 4);
 		PlayerPrefs.Save ();
 	}
 
