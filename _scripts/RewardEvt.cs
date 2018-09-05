@@ -122,6 +122,7 @@ public class RewardEvt : MonoBehaviour {
 		string str = PlayerPrefs.GetString ("code", "");
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + coin_i[rewardIndex_i];
+		PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
 		PlayerPrefs.SetInt ("reward"+rewardIndex_i, 4);
 		PlayerPrefs.Save ();
 	}
