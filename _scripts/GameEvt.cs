@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameEvt : MonoBehaviour
 {
@@ -35,8 +36,34 @@ public class GameEvt : MonoBehaviour
     //광고시청불가
     public GameObject noADS_popup;
 
+
+
+
+
+    //---스크롤 민감도
+    private const float inchToCm = 2f;
+
+    [SerializeField]
+    private EventSystem eventSystem = null;
+
+    [SerializeField]
+    private float dragThresholdCM = 0.1f;
+    //For drag Threshold
+
+    private void SetDragThreshold()
+    {
+        if (eventSystem != null)
+        {
+            eventSystem.pixelDragThreshold = (int)(dragThresholdCM * Screen.dpi / inchToCm);
+        }
+    }
+    //----------------
+
+
     void Awake()
     {
+        //SetDragThreshold();
+
         //스프라이트동적할당
         ppiyakBasic_spr = Resources.LoadAll<Sprite>("ppiyak/ppiyak_01(170x130)");
         ppiyakGood_spr = Resources.LoadAll<Sprite>("ppiyak/ppiyak_02(170x130)");

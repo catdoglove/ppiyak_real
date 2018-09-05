@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RewardEvt : MonoBehaviour {
 
 	public Sprite[] reward_spr_u,reward_spr_l,reward_spr_r,reward_spr_b;
-	public GameObject[] reward_obj;
+	public GameObject[] reward_obj, success_obj;
 	public Button[] reward_btn;
 	public int[] coin_i;
 
@@ -103,23 +103,27 @@ public class RewardEvt : MonoBehaviour {
 			if (PlayerPrefs.GetInt ("reward" + i, 0) == 4) {
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_b [i];
 				reward_btn [i].GetComponent<Button> ().interactable = false;
-			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 1){
+                success_obj[i].SetActive(true);
+            } else if (PlayerPrefs.GetInt ("reward" + i, 0) == 1){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_b [i];
 				reward_btn [i].GetComponent<Button> ().interactable = true;
 			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 2){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_l [i];
 				reward_btn [i].GetComponent<Button> ().interactable = false;
-			} else if (PlayerPrefs.GetInt ("reward" + i, 0) == 3){
+                success_obj[i].SetActive(true);
+            } else if (PlayerPrefs.GetInt ("reward" + i, 0) == 3){
 				reward_obj [i].GetComponent<Image> ().sprite = reward_spr_r [i];
 				reward_btn [i].GetComponent<Button> ().interactable = false;
-			}
+                success_obj[i].SetActive(true);
+            }
 		}
 
 	}
 
 	public void getReward(){
 		reward_btn [rewardIndex_i].GetComponent<Button> ().interactable = false;
-		string str = PlayerPrefs.GetString ("code", "");
+        success_obj[rewardIndex_i].SetActive(true);
+        string str = PlayerPrefs.GetString ("code", "");
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = PlayerPrefs.GetInt (str, 0);
 		GM.GetComponent<GameBtnEvt> ().gameCoin_i = GM.GetComponent<GameBtnEvt> ().gameCoin_i + coin_i[rewardIndex_i];
 		PlayerPrefs.SetInt (str, GM.GetComponent<GameBtnEvt> ().gameCoin_i);
