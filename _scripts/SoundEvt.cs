@@ -67,6 +67,15 @@ public class SoundEvt : MonoBehaviour {
         se_touch.Play();
     }
 
+
+    public void bornSound()
+    {
+        se_born = gameObject.GetComponent<AudioSource>();
+        se_born.clip = sp_born;
+        se_born.loop = false;
+        se_born.Play();
+    }
+
     public void touchEggSound(){
 
         if(PlayerPrefs.GetInt("bornppiyak", 0) == 99) // 태어남
