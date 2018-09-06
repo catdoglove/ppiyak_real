@@ -13,11 +13,7 @@ public class RewardEvt : MonoBehaviour {
 	public int rewardIndex_i;
 
 	public GameObject GM, rewardWindow;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    
 
     public void opienWindow()
     {
