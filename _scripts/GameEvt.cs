@@ -41,13 +41,13 @@ public class GameEvt : MonoBehaviour
 
 
     //---스크롤 민감도
-    private const float inchToCm = 2f;
+    private const float inchToCm = 2.5f;
 
     [SerializeField]
     private EventSystem eventSystem = null;
 
     [SerializeField]
-    private float dragThresholdCM = 0.1f;
+    private float dragThresholdCM = 0.5f;
     //For drag Threshold
 
     private void SetDragThreshold()
@@ -62,7 +62,7 @@ public class GameEvt : MonoBehaviour
 
     void Awake()
     {
-        //SetDragThreshold();
+        SetDragThreshold();
 
         //스프라이트동적할당
         ppiyakBasic_spr = Resources.LoadAll<Sprite>("ppiyak/ppiyak_01(170x130)");
